@@ -131,8 +131,15 @@ h2 { font-size: clamp(1.6rem, 5vw, 2.3rem); line-height: 1.15; letter-spacing: -
 .screenshot-slot { border: 2px dashed var(--ink-faint); border-radius: 1.25rem; padding: 2rem 1rem; text-align: center; color: var(--ink-muted); font-size: .9rem; }
 
 /* App screenshots in a calm phone frame */
-.shot { margin: 0; width: 100%; max-width: 18rem; justify-self: center; }
-.shot img { display: block; width: 100%; height: auto; background: #000; border: 3px solid #2a2e35; border-radius: 12% / 5.5%; }
+/* Same iPhone frame as the portfolio card: titanium edge, black bezel, side buttons */
+.shot { position: relative; margin: 0; width: 100%; max-width: 18rem; justify-self: center; padding: 3.2%;
+  border: 3px solid transparent; border-radius: 15% / 7%;
+  background: linear-gradient(#000, #000) padding-box,
+              linear-gradient(140deg, #5b5f66 0%, #2a2d32 18%, #1a1c1f 50%, #2c2f34 82%, #55595f 100%) border-box; }
+.shot img { display: block; width: 100%; height: auto; background: #000; border-radius: 12% / 5.6%; }
+.shot::before, .shot::after { content: ""; position: absolute; width: 3px; border-radius: 2px; background: #3a3d42; }
+.shot::before { left: -6px; top: 22%; height: 9%; box-shadow: 0 -4.5em 0 #3a3d42; }
+.shot::after { right: -6px; top: 26%; height: 13%; }
 .shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; justify-items: center; }
 .shots-one { grid-template-columns: minmax(0, 1fr); }
 .shots-one .shot { max-width: 15rem; }
