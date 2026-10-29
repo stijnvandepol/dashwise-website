@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashwise support</title>
+<meta name="description" content="Help for Dashwise: which OBD-II adapters work with iPhone, common questions, the simulator and how to contact us.">
+<meta name="color-scheme" content="dark light">
+<link rel="canonical" href="https://getdashwise.nl/support.html">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/mark.svg" alt="" width="32" height="32"><span>Dashwise</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="./">Home</a>
+      <a href="support.html" aria-current="page">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="prose">
+<h1>Dashwise support</h1>
+<p>Dashwise is an iPhone app that shows live engine data, fault codes, trips and lap times from an ELM327-compatible OBD-II adapter.</p>
+
+<h2 id="contact">Contact</h2>
+<p>E-mail: <a href="mailto:info@getdashwise.nl">info@getdashwise.nl</a></p>
+<p>Please include your iPhone model, the iOS version, the Dashwise version (Settings &gt; Help &gt; About), your adapter (brand and model) and your car (make, model, year). If something went wrong while connecting, the log under Settings &gt; Debug &gt; Export log helps a lot. Check it before you send it: it contains the adapter's replies, never your location or your car's VIN.</p>
+
+<h2 id="adapters">Which adapters work</h2>
+<ul>
+<li><strong>Works:</strong> ELM327-compatible adapters with <strong>Bluetooth LE</strong> (for example Konnwei KW905, Vgate vLinker MC+, OBDLink CX) or <strong>Wi-Fi</strong> (join the adapter's Wi-Fi network first; usually 192.168.0.10, port 35000).</li>
+<li><strong>Does not work:</strong> Bluetooth Classic adapters without Apple's "Made for iPhone" chip (most "v1.5" and "v2.1" clones, OBDLink LX/MX+, Vgate iCar2). This is a limit of iOS, not of Dashwise.</li>
+</ul>
+
+<h2 id="simulator">Try it without a car</h2>
+<p>Choose "Simulator" under Settings &gt; Adapter and tap Connect. The simulator drives a virtual engine, so the Dash, Sensors, Diag, Trips and Track pages all work with simulated data.</p>
+
+<h2 id="faq">Common questions</h2>
+<div class="faq">
+<details><summary>The adapter does not show up when I scan.</summary>
+<p>Allow Bluetooth for Dashwise (Settings &gt; Privacy &amp; Security &gt; Bluetooth). Switch the adapter on; a KW905 needs its button pressed so the light is on. Turn the ignition on.</p></details>
+<details><summary>It connects, but there are no values.</summary>
+<p>Turn the ignition on (engine running for most values). Some cars answer slowly on the K-line; the first values can take up to a minute.</p></details>
+<details><summary>Can Dashwise clear my check-engine light?</summary>
+<p>Yes, under Diag, but only with the engine off and the ignition on, and after two confirmations. Clearing also resets the readiness monitors, which an inspection may check. Fix the cause first.</p></details>
+<details><summary>Do I need an account or an internet connection?</summary>
+<p>You need no account. Dashwise talks to your adapter without the internet. Your iPhone only goes online for two things, both through Apple: map images while a trip's map is on screen, and looking up the start and end address of a trip. See the <a href="privacy.html">privacy policy</a>.</p></details>
+<details><summary>Can I try it without a car?</summary>
+<p>Yes. Choose "Simulator" under Settings &gt; Adapter and tap Connect.</p></details>
+</div>
+
+<h2 id="safety">Safety</h2>
+<p>Dashwise shows what your car reports. It is not a safety system and does not replace your car's own gauges and warning lights or a professional diagnosis. Keep your eyes on the road; let a passenger operate the app while driving. Lap timing is meant for circuits, not public roads.</p>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Stijn van de Pol</p>
+    <nav aria-label="Footer">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="mailto:info@getdashwise.nl">info@getdashwise.nl</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

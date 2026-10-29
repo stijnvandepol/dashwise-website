@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashwise - OBD2 dashboard and trip logbook for iPhone</title>
+<meta name="description" content="Live engine data, fault codes, a trip logbook and lap timing from your OBD-II adapter. Private by design: no account, nothing leaves your iPhone.">
+<meta name="color-scheme" content="dark light">
+<link rel="canonical" href="https://getdashwise.nl/">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/mark.svg" alt="" width="32" height="32"><span>Dashwise</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#features">Features</a>
+      <a href="#need">What you need</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">OBD2 dashboard for iPhone</p>
+      <h1 class="display" id="hero-title">Your car, at a glance.</h1>
+      <p class="lead">Plug a Bluetooth LE or Wi-Fi ELM327 adapter into the OBD-II port and see what your engine is doing, live. Fault codes, a trip logbook and lap timing, all private on your iPhone.</p>
+      <div class="cta-row">
+        <!-- TODO: App Store URL -->
+        <a class="btn" href="#get-the-app">Get it on the App Store</a>
+        <a class="btn btn-ghost" href="#features">See what it does</a>
+      </div>
+      <p class="note">No account. No ads. No tracking.</p>
+    </div>
+    <!-- Dashboard impression, built in HTML/CSS. Values are an example, not a screenshot. -->
+    <div class="cluster" role="img" aria-label="Example of the Dashwise dashboard: 5,400 rpm, 112 kilometres per hour, coolant 89 degrees Celsius, with a rev bar close to the caution zone.">
+      <p class="cluster-title" aria-hidden="true"><span>Dash</span><span>Example</span></p>
+      <ul class="rev" aria-hidden="true">
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+      </ul>
+      <dl class="tiles" aria-hidden="true">
+        <div class="tile tile-wide"><dt>Engine speed</dt><dd>5400<span class="unit">rpm</span></dd></div>
+        <div class="tile"><dt>Speed</dt><dd>112<span class="unit">km/h</span></dd></div>
+        <div class="tile"><dt>Coolant</dt><dd class="state-ok">89<span class="unit">&deg;C</span></dd></div>
+      </dl>
+    </div>
+  </div>
+  <!-- SCREENSHOT: hero, iPhone 6.9", Dash page in the Race theme, simulator or real car -->
+</section>
+
+<!-- LIVE DASHBOARD -->
+<section id="features" aria-labelledby="live-title">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Live dashboard</p>
+      <h2 id="live-title">Numbers you can read in a glance.</h2>
+      <p class="lead">Large numerals made to be read at a glance, and a smooth segmented rev bar with redline and caution zones for your engine.</p>
+      <ul class="checks">
+        <li>Engine speed, road speed, coolant, intake, throttle, load, battery voltage and more</li>
+        <li>A sensors list with every value your car supports</li>
+        <li>Your own limits for coolant, voltage and rpm: a calm coloured frame, a banner and an optional tone when a value goes out of range</li>
+      </ul>
+    </div>
+    <div class="cluster" role="img" aria-label="Example of a sensors list: battery voltage 14.1 volts, intake air 31 degrees Celsius, throttle 42 percent, engine load 63 percent.">
+      <div class="live" aria-hidden="true">
+        <div class="row"><span>BATTERY</span><b>14.1 V</b></div>
+        <div class="row"><span>INTAKE</span><b>31 &deg;C</b></div>
+        <div class="row"><span>THROTTLE</span><b>42 %</b></div>
+        <div class="row"><span>LOAD</span><b>63 %</b></div>
+        <div class="row"><span>COOLANT</span><b class="state-caution">104 &deg;C</b></div>
+      </div>
+    </div>
+  </div>
+  <!-- SCREENSHOT: Sensors page with a warning banner -->
+</section>
+
+<!-- FAULT CODES -->
+<section aria-labelledby="dtc-title">
+  <div class="wrap split reverse">
+    <div>
+      <p class="eyebrow">Fault codes</p>
+      <h2 id="dtc-title">Know what the check-engine light means.</h2>
+      <p class="lead">Read stored, pending and permanent diagnostic trouble codes with plain-English descriptions.</p>
+      <ul class="checks">
+        <li>Readiness monitors and freeze frame data</li>
+        <li>Clear codes safely: only with the engine off and after two confirmations</li>
+      </ul>
+      <p class="note">Clearing codes also resets the readiness monitors. Fix the cause first.</p>
+    </div>
+    <div class="cluster" role="img" aria-label="Example of a fault code list: P0301 stored, P0420 pending, P0171 stored.">
+      <ul class="dtc" aria-hidden="true">
+        <li><span class="c">P0301</span><span>Cylinder 1 misfire</span><span class="k state-danger">Stored</span></li>
+        <li><span class="c">P0420</span><span>Catalyst efficiency</span><span class="k state-caution">Pending</span></li>
+        <li><span class="c">P0171</span><span>System too lean</span><span class="k state-danger">Stored</span></li>
+      </ul>
+    </div>
+  </div>
+  <!-- SCREENSHOT: Diag page with fault codes -->
+</section>
+
+<!-- TRIP LOGBOOK -->
+<section aria-labelledby="trips-title">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Trip logbook</p>
+      <h2 id="trips-title">Every drive, logged.</h2>
+      <p class="lead">Record trips automatically or by hand. Distance, duration, top speed and the route of every drive, with start and end addresses.</p>
+      <ul class="checks">
+        <li>Export your trips for mileage claims <span class="tag">Coming soon</span></li>
+        <li>Export to GPX, VBO or CSV and share with the apps you already use</li>
+        <li>Addresses are looked up on your iPhone with Apple and stay on your iPhone</li>
+      </ul>
+    </div>
+    <div class="cluster trip" role="img" aria-label="Example of a trip: 42.8 kilometres in 38 minutes, top speed 118 kilometres per hour.">
+      <div aria-hidden="true">
+        <p class="route"><b>Hoofdstraat 12, Eindhoven</b> to <b>Kerkplein 3, Utrecht</b></p>
+      </div>
+      <dl class="stats" aria-hidden="true">
+        <div class="tile"><dt>Distance</dt><dd>42.8<span class="unit">km</span></dd></div>
+        <div class="tile"><dt>Time</dt><dd>38<span class="unit">min</span></dd></div>
+        <div class="tile"><dt>Top</dt><dd>118<span class="unit">km/h</span></dd></div>
+      </dl>
+    </div>
+  </div>
+  <!-- SCREENSHOT: Trips list and a trip detail with route -->
+</section>
+
+<!-- TRACK DAYS -->
+<section aria-labelledby="track-title">
+  <div class="wrap split reverse">
+    <div>
+      <p class="eyebrow">Track days</p>
+      <h2 id="track-title">Lap timing for the circuit.</h2>
+      <p class="lead">GPS lap timing with your own start/finish and sector lines. Best lap, last lap and live delta, plus a shift light you set yourself.</p>
+      <p class="note">Lap timing is meant for circuits, not public roads.</p>
+    </div>
+    <div class="cluster" role="img" aria-label="Example of lap timing: last lap 1 minute 42.318 seconds, delta minus 0.214 seconds.">
+      <div aria-hidden="true">
+        <p class="cluster-title"><span>Last lap</span><span>Lap 7</span></p>
+        <p class="lap">1:42.318</p>
+        <p class="delta state-ok">-0.214</p>
+      </div>
+    </div>
+  </div>
+  <!-- SCREENSHOT: Track page during a session -->
+</section>
+
+<!-- LIVE ACTIVITY -->
+<section aria-labelledby="live-activity-title">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Lock Screen and CarPlay</p>
+      <h2 id="live-activity-title">Your key value, one glance away.</h2>
+      <p class="lead">A Live Activity shows your key value and warnings on the Lock Screen and in the CarPlay Dashboard.</p>
+      <p class="note">Dashwise shows what your car reports. Keep your eyes on the road and let a passenger operate the app while driving.</p>
+    </div>
+    <!-- SCREENSHOT: Live Activity on the Lock Screen and in the CarPlay Dashboard -->
+    <div class="screenshot-slot">Screenshot of the Live Activity will be added here.</div>
+  </div>
+</section>
+
+<!-- THEMES -->
+<section aria-labelledby="themes-title">
+  <div class="wrap">
+    <p class="eyebrow">Make it yours</p>
+    <h2 id="themes-title">Nine themes, five cluster styles.</h2>
+    <p class="lead">Day and night themes, your own accent colour, and the choice of which screen Dashwise opens with: dashboard or trips.</p>
+    <div class="swatches" aria-hidden="true">
+      <div class="swatch sw-race"><span>Race</span><span class="bar"></span></div>
+      <div class="swatch sw-rosso"><span>Rosso</span><span class="bar"></span></div>
+      <div class="swatch sw-day"><span>Day</span><span class="bar"></span></div>
+    </div>
+    <!-- SCREENSHOT: Theme picker -->
+  </div>
+</section>
+
+<!-- PRIVATE BY DESIGN -->
+<section aria-labelledby="private-title">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Private by design</p>
+      <h2 id="private-title">Your data stays on your iPhone.</h2>
+      <p class="lead">No account, no ads, no tracking. Nothing is uploaded.</p>
+    </div>
+    <div>
+      <ul class="checks">
+        <li>Engine data and trips are stored on your device only</li>
+        <li>Map images come from Apple Maps while a trip's map is on screen; the route itself is never sent</li>
+        <li>Only the start and end points of a trip are sent to Apple to look up their addresses</li>
+      </ul>
+      <p class="note"><a href="privacy.html">Read the privacy policy</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU NEED -->
+<section id="need" aria-labelledby="need-title">
+  <div class="wrap">
+    <p class="eyebrow">What you need</p>
+    <h2 id="need-title">An adapter and a car.</h2>
+    <div class="grid-3">
+      <div class="card"><h3>An adapter</h3><p>An ELM327-compatible OBD-II adapter with Bluetooth LE or Wi-Fi, for example Konnwei KW905, Vgate vLinker MC+ or other BLE/Wi-Fi models.</p></div>
+      <div class="card"><h3>A car</h3><p>A car with an OBD-II port: most petrol cars from 1996 in the US and 2001 in the EU, diesels from 2004.</p></div>
+      <div class="card"><h3>Not Classic Bluetooth</h3><p>Classic Bluetooth adapters without "Made for iPhone" support cannot connect to an iPhone. This is an iOS limit, not a Dashwise one.</p></div>
+    </div>
+    <p class="note">No adapter yet? Try Dashwise with the built-in simulator. <a href="support.html#adapters">Which adapters work</a></p>
+  </div>
+</section>
+
+<!-- GET THE APP -->
+<section id="get-the-app" aria-labelledby="get-title">
+  <div class="wrap">
+    <h2 id="get-title">Get Dashwise for iPhone.</h2>
+    <p class="lead">Requires iOS 26 or later.</p>
+    <div class="cta-row">
+      <!-- TODO: App Store URL -->
+      <a class="btn" href="#get-the-app">Get it on the App Store</a>
+    </div>
+    <p class="note">Dashwise shows what your car reports. It is not a replacement for your car's own warning lights or for a professional diagnosis.</p>
+  </div>
+</section>
+
+<!-- ANDROID: hidden until the Android app ships. Add the class "is-on" to .platform-android to show it. -->
+<section class="platform-android" aria-labelledby="android-title">
+  <div class="wrap">
+    <p class="eyebrow">Android</p>
+    <h2 id="android-title">Android version coming soon.</h2>
+    <p class="lead">The Android app will look and work exactly like the iPhone app.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Stijn van de Pol</p>
+    <nav aria-label="Footer">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="mailto:info@getdashwise.nl">info@getdashwise.nl</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
