@@ -74,8 +74,8 @@ server:
 If a check fails, the run turns red in the Actions tab. The new container is then already running, so
 fix the problem or roll back (see below).
 
-The container listens only on `127.0.0.1:8080`. A Cloudflare Tunnel (or a reverse proxy) makes it public and handles HTTPS
-for `getdashwise.nl`.
+The container listens on port 8080. Your Cloudflare Tunnel makes it public on `getdashwise.nl` and
+handles HTTPS.
 
 ### One-time server setup
 
@@ -100,33 +100,23 @@ You need a Linux server with Docker, the Docker Compose plugin and a reverse pro
 
    The runner must show as **Idle** under Settings > Actions > Runners.
 
-3. **Make it public with Cloudflare.** The domain's DNS must be on Cloudflare. Choose one:
+3. **Make it public with your existing Cloudflare Tunnel.** The container listens on port 8080 on all
+   interfaces of the server (`WEB_BIND`, `WEB_PORT`). In Cloudflare Zero Trust > Networks > Tunnels,
+   open your tunnel and add **Public hostnames**:
+   - `getdashwise.nl` → Service `HTTP`, URL `<server-ip>:8080` (the server's LAN address as cloudflared
+     sees it; `localhost:8080` if cloudflared runs on this same server, outside Docker)
+   - `www.getdashwise.nl` → the same service
 
-   **A. Cloudflare Tunnel in this stack (recommended, no open ports):**
-   1. Cloudflare dashboard > Zero Trust > Networks > Tunnels > Create a tunnel > Cloudflared.
-      Name it `dashwise-website`. Copy the **token** (the long string after `--token`); skip the install step.
-   2. In the tunnel, add **Public hostnames**:
-      - `getdashwise.nl` → Service `HTTP`, URL `web:8080`
-      - `www.getdashwise.nl` → Service `HTTP`, URL `web:8080`
-   3. In this GitHub repo: Settings > Secrets and variables > Actions > New repository secret,
-      name `CLOUDFLARE_TUNNEL_TOKEN`, value the token. Never commit the token.
-   4. Run the Deploy workflow. It now also starts the `dashwise-website-tunnel` container, and the
-      tunnel shows as **Healthy** in Cloudflare.
-
-   **B. cloudflared already runs on the server:** add the public hostnames to that tunnel with URL
-   `localhost:8080` (or `http://127.0.0.1:8080`). No secret needed.
-
-   **Then, in the Cloudflare dashboard for `getdashwise.nl`:**
-   - SSL/TLS > Overview: **Full**. The tunnel carries the traffic encrypted; the container itself
-     speaks HTTP.
+   Cloudflare creates the DNS records itself. Then, for the `getdashwise.nl` zone:
    - SSL/TLS > Edge Certificates: **Always Use HTTPS** on.
-   - Rules > Redirect Rules: redirect `www.getdashwise.nl/*` to `https://getdashwise.nl/${1}` (301),
-     or leave both hostnames serving the same site; the pages carry a canonical link either way.
-   - Leave Cloudflare Web Analytics and other script injection (Rocket Loader, Email Address
-     Obfuscation) **off**. They add scripts or third-party requests that the CSP blocks and the privacy
-     page rules out.
+   - Optional: Rules > Redirect Rules, `www.getdashwise.nl/*` → `https://getdashwise.nl/${1}` (301).
+   - Leave Web Analytics, Rocket Loader and Email Address Obfuscation **off**: they inject scripts that
+     the CSP blocks and the privacy page rules out.
 
-4. **Without Cloudflare:** point a reverse proxy at `127.0.0.1:8080` instead, for example with Caddy:
+   Port 8080 is open on the server's network. Keep it closed to the internet in your router or firewall;
+   the tunnel is the only public way in.
+
+4. **Without Cloudflare:** point a reverse proxy at port 8080 instead, for example with Caddy:
 
    ```
    getdashwise.nl {
@@ -199,7 +189,7 @@ Every response gets these headers (`docker/security-headers.conf`):
 - HSTS.
 
 The container runs nginx as a non-root user, with a read-only file system, no Linux capabilities and
-`no-new-privileges`. It only listens on localhost.
+`no-new-privileges`. It listens on port 8080 of the server; only the Cloudflare Tunnel exposes it to the internet.
 
 **Keep this repository private.** It uses a self-hosted runner. In a public repository, someone's pull
 request could run code on your server.

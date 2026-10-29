@@ -4,33 +4,13 @@ services:
     image: dashwise-website:latest
     container_name: dashwise-website
     restart: unless-stopped
-    # Only on localhost. Public traffic arrives through the Cloudflare Tunnel below
-    # (or through a cloudflared or reverse proxy that already runs on the host).
+    # Reachable from outside the host, so the existing Cloudflare Tunnel (cloudflared elsewhere on the
+    # network) can reach it. Set WEB_BIND=127.0.0.1 to keep it local to the server.
     ports:
-      - "127.0.0.1:${WEB_PORT:-8080}:8080"
+      - "${WEB_BIND:-0.0.0.0}:${WEB_PORT:-8080}:8080"
     read_only: true
     tmpfs:
       - /tmp
-    cap_drop:
-      - ALL
-    security_opt:
-      - no-new-privileges:true
-
-  # Cloudflare Tunnel: makes the site public without opening a port on the server.
-  # Starts only with the "tunnel" profile, which the deploy workflow enables when the
-  # CLOUDFLARE_TUNNEL_TOKEN secret is set. In the tunnel's public hostname, use the service
-  # http://web:8080.
-  cloudflared:
-    image: cloudflare/cloudflared:2024.12.2
-    container_name: dashwise-website-tunnel
-    profiles: ["tunnel"]
-    restart: unless-stopped
-    command: tunnel --no-autoupdate run
-    environment:
-      TUNNEL_TOKEN: ${TUNNEL_TOKEN:-}
-    depends_on:
-      - web
-    read_only: true
     cap_drop:
       - ALL
     security_opt:
