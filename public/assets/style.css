@@ -163,3 +163,7 @@ h2 { font-size: clamp(1.6rem, 5vw, 2.3rem); line-height: 1.15; letter-spacing: -
 .site-nav a.lang, .site-footer a.lang { font-weight: 600; }
 .site-nav a.lang { border: 1px solid var(--ink-faint); border-radius: 999px; padding: .25rem .7rem; color: var(--ink); }
 .prose-narrow { max-width: 46rem; }
+
+/* Imprint block in the footer */
+.site-footer .imprint p { margin: 0 0 .5rem; }
+.site-footer address { font-style: normal; line-height: 1.6; }

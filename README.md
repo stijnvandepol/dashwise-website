@@ -27,6 +27,7 @@ public/                     Everything the site serves (the container's web root
   privacy.html              Privacy policy (App Store Privacy Policy URL)
   404.html                  Bilingual not-found page
   nl/                       Dutch versions of the three pages
+  .well-known/security.txt  RFC 9116 security contact (renew Expires yearly)
   assets/style.css          All styles; colour tokens from the app's Race (dark) and Day (light) themes
   assets/mark.svg           Vector app mark used in the header
   assets/app-icon-1024.png  The app icon (source for the icon set)
@@ -115,6 +116,10 @@ You need a Linux server with Docker, the Docker Compose plugin and a reverse pro
    }
    ```
 
+   Caddy writes no access log unless you add a `log` directive; keep it that way, because the privacy
+   page promises logs without IP addresses. With nginx or Traefik, turn the access log off for this
+   site or use a format without the client address.
+
    With nginx or Traefik, proxy to `http://127.0.0.1:8080`, keep the `Host` header, and let the proxy
    handle the certificates.
 
@@ -190,8 +195,24 @@ request could run code on your server.
 - [ ] Confirm the price in the JSON-LD (now `0 EUR`, with a `TODO` comment) once it is set in
       App Store Connect.
 - [ ] Set "Last updated" on both privacy pages to the publication date, and remove the TODO comments.
+- [ ] Fill in the imprint placeholders (visible as `[address]`, `[KvK]`, `[btw-id]`, each with a `TODO`
+      comment) in the footer of all six pages, and in `privacy.html` and `nl/privacy.html`
+      (address, KvK number). The btw-id is the VAT id, not the BSN-based number.
+- [ ] Fill in `[mail provider]` in both privacy pages (`TODO: mail provider`).
+- [ ] TODO: log rotation. The privacy pages promise logs are kept at most 14 days and nginx logs to
+      stdout/stderr, so set the Docker log driver on the server, for example in `compose.yaml`:
+      `logging: {driver: json-file, options: {max-size: "10m", max-file: "3"}}`, and check that the log
+      size and rotation stay within 14 days. The access log has no IP addresses, but the reverse proxy
+      on the host has its own logs: configure those without IP addresses too, or adjust the privacy text.
+- [ ] Switch the security contact to security@getdashwise.nl when that address exists (`security.txt`,
+      both support pages, both privacy pages).
 - [ ] Add real screenshots at the screenshot slots.
 - [ ] Update `lastmod` in `sitemap.xml` when pages change.
+
+**Every year**
+
+- [ ] Renew `Expires` in `public/.well-known/security.txt` (now 2027-10-29) before it passes. RFC 9116
+      requires it.
 
 **After going live: get found**
 

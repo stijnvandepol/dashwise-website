@@ -1,0 +1,5 @@
+Contact: mailto:info@getdashwise.nl
+Expires: 2027-10-29T00:00:00.000Z
+Preferred-Languages: en, nl
+Canonical: https://getdashwise.nl/.well-known/security.txt
+Policy: https://getdashwise.nl/support#security
