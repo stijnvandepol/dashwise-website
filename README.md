@@ -1,35 +1,49 @@
-# Dashwise website (getdashwise.nl)
+# getdashwise.nl
 
-Plain static HTML and CSS in `public/`, served by unprivileged nginx in Docker. No build step, no
-JavaScript, no external requests. A push to `main` deploys automatically through a self-hosted GitHub
-runner on the web server.
+The website for **Dashwise**, the iPhone app that turns an ELM327 OBD-II adapter into a live
+dashboard, fault-code reader and trip logbook. An Android version will follow.
 
-| File | Purpose |
-|---|---|
-| `public/index.html`, `support.html`, `privacy.html` | English pages (landing, App Store Support URL, App Store Privacy URL) |
-| `public/nl/index.html`, `nl/support.html`, `nl/privacy.html` | Dutch versions (`hreflang` pairs with the English pages) |
-| `public/404.html` | Bilingual not-found page |
-| `assets/style.css`, `assets/mark.svg` | Shared styles (tokens from the app's Race and Day themes), vector app mark |
-| `favicon.ico`, `favicon-16.png`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `assets/app-icon-1024.png` | Icon set, generated from the app's `AppIcon-1024.png` with `sips` |
-| `og-image.png` | 1200x630 social card (Open Graph, Twitter) |
-| `site.webmanifest` | Web manifest (name, theme colour `#111418`, icons) |
-| `robots.txt`, `sitemap.xml`, `llms.txt` | Crawl files for search engines and AI assistants |
-| `Dockerfile`, `compose.yaml`, `docker/` | nginx image, container settings, server config (clean URLs, 404, cache) and the security headers (strict CSP) |
-| `.github/workflows/deploy.yml` | Build and restart the container on every push to `main`, then smoke-test it |
+- **Stack:** plain static HTML and CSS, served by unprivileged nginx in Docker.
+- **Privacy:** no build step, no JavaScript, no cookies, no analytics, no external requests.
+- **Deploy:** every push to `main` deploys automatically through a self-hosted GitHub runner on the
+  web server.
 
-URLs are clean (`/support`, not `/support.html`): nginx serves `/support` from `support.html` and redirects `/support.html` to `/support`, so
-canonicals, hreflang and the sitemap use the clean form. The JSON-LD blocks are data blocks, so the
-`script-src 'none'` CSP does not affect them. Keep the FAQ JSON-LD on the support pages identical to the
-visible FAQ when you edit either.
+## Contents
 
-## To do before going live
+- [Repository layout](#repository-layout)
+- [Run locally](#run-locally)
+- [Deployment](#deployment)
+- [Editing the site](#editing-the-site)
+- [Security](#security)
+- [Launch checklist](#launch-checklist)
+- [E-mail: info@getdashwise.nl](#e-mail-infogetdashwisenl)
 
-- Replace the two `TODO: App Store URL` links in `index.html` and in `nl/index.html`; also add `downloadUrl` to the JSON-LD.
-- Confirm the price (`TODO` comment above the JSON-LD in both index pages, now `0 EUR`) once Pricing and Availability is set.
-- Set the date on `privacy.html` and `nl/privacy.html` ("Last updated") to the publication date and remove the TODO comments.
-- Put real screenshots at the `<!-- SCREENSHOT: ... -->` slots. Images must be served from this site
-  (CSP: `img-src 'self'`).
-- Android: when the app ships, add the class `is-on` to `<section class="platform-android">`.
+## Repository layout
+
+```
+public/                     Everything the site serves (the container's web root)
+  index.html                English landing page
+  support.html              Support and FAQ (App Store Support URL)
+  privacy.html              Privacy policy (App Store Privacy Policy URL)
+  404.html                  Bilingual not-found page
+  nl/                       Dutch versions of the three pages
+  assets/style.css          All styles; colour tokens from the app's Race (dark) and Day (light) themes
+  assets/mark.svg           Vector app mark used in the header
+  assets/app-icon-1024.png  The app icon (source for the icon set)
+  favicon*.ico|png, apple-touch-icon.png, icon-192.png, icon-512.png
+  og-image.png              1200x630 social card (Open Graph, X, WhatsApp, LinkedIn)
+  site.webmanifest          Web app manifest
+  robots.txt, sitemap.xml   Crawl files for search engines
+  llms.txt                  Plain-text summary for AI assistants
+docker/
+  nginx.conf                Server config: clean URLs, 404, caching, /healthz
+  security-headers.conf     CSP and other security headers, included in every location
+Dockerfile                  nginx-unprivileged image with the config and public/
+compose.yaml                Container settings (localhost only, read-only, no capabilities)
+.github/workflows/deploy.yml  Build, restart and smoke-test on every push to main
+```
+
+`_preview/` holds local screenshots and is git-ignored.
 
 ## Run locally
 
@@ -37,53 +51,169 @@ visible FAQ when you edit either.
 docker compose up -d --build
 ```
 
-The site is then on http://127.0.0.1:8080 (set `WEB_PORT` for another port).
+Open http://127.0.0.1:8080. To use another port, set `WEB_PORT`, for example
+`WEB_PORT=9000 docker compose up -d --build`. Stop the site with `docker compose down`.
 
-## Deploy: Docker on your server with a self-hosted runner
+To preview the HTML without Docker, run `python3 -m http.server -d public 8000`. Clean URLs such as
+`/support` only work through nginx; use `/support.html` there.
 
-One-time setup on the server (Linux with Docker and the Compose plugin):
+## Deployment
 
-1. **Runner user:** create a user for the runner and add it to the `docker` group:
-   `sudo useradd -m -s /bin/bash gh-runner && sudo usermod -aG docker gh-runner`.
-2. **Runner:** on GitHub, open this repo > Settings > Actions > Runners > New self-hosted runner > Linux, and
-   follow the commands as `gh-runner`. At `config.sh`, add the label `dashwise-website`
-   (`--labels dashwise-website`). Then install it as a service: `sudo ./svc.sh install gh-runner && sudo ./svc.sh start`.
-3. **Reverse proxy and TLS:** the container listens only on `127.0.0.1:8080`. Point `getdashwise.nl` and
-   `www.getdashwise.nl` (redirect to the apex) at it from your reverse proxy, for example with Caddy:
+### How it works
+
+On every push to `main`, and on demand through Actions > Deploy > Run workflow, the runner on the
+server:
+
+1. checks out the repository;
+2. builds the image (`docker compose build --pull`);
+3. replaces the running container (`docker compose up -d --remove-orphans`);
+4. checks `/healthz`, `/`, `/nl/` and `/support`, and that a missing page returns 404;
+5. removes old images.
+
+If a check fails, the run turns red in the Actions tab. The new container is then already running, so
+fix the problem or roll back (see below).
+
+The container listens only on `127.0.0.1:8080`. A reverse proxy on the same server terminates HTTPS
+for `getdashwise.nl`.
+
+### One-time server setup
+
+You need a Linux server with Docker, the Docker Compose plugin and a reverse proxy.
+
+1. **Create a runner user** that may use Docker:
+
+   ```bash
+   sudo useradd -m -s /bin/bash gh-runner
+   sudo usermod -aG docker gh-runner
+   ```
+
+2. **Install the runner.** On GitHub, open this repository > Settings > Actions > Runners >
+   New self-hosted runner > Linux, and run the commands it shows as `gh-runner`
+   (`sudo -iu gh-runner`). When `config.sh` asks for labels, add `dashwise-website`, or pass
+   `--labels dashwise-website`. Then, from the runner folder, install it as a service:
+
+   ```bash
+   sudo ./svc.sh install gh-runner
+   sudo ./svc.sh start
+   ```
+
+   The runner must show as **Idle** under Settings > Actions > Runners.
+
+3. **DNS:** add A (and AAAA) records for `getdashwise.nl` and `www.getdashwise.nl` that point at the
+   server.
+
+4. **Reverse proxy:** forward the domain to the container and redirect `www` to the apex. With Caddy
+   (HTTPS certificates are automatic):
 
    ```
    getdashwise.nl {
        reverse_proxy 127.0.0.1:8080
    }
+
    www.getdashwise.nl {
        redir https://getdashwise.nl{uri} permanent
    }
    ```
 
-   DNS: an A/AAAA record for `getdashwise.nl` and `www` pointing at the server.
-4. **First deploy:** Actions > Deploy > Run workflow, or push to `main`. The workflow builds the image,
-   restarts the container, checks `/healthz`, `/`, `/nl/`, `/support` and the 404, and prunes old images.
+   With nginx or Traefik, proxy to `http://127.0.0.1:8080`, keep the `Host` header, and let the proxy
+   handle the certificates.
 
-Keep this repository **private** while it uses a self-hosted runner: the workflow only runs on pushes to
-`main`, but a public repo would let anyone's pull request target your server's runner.
+5. **First deploy:** Actions > Deploy > Run workflow. Then check:
 
-Check the live headers with `curl -sI https://getdashwise.nl/`.
+   ```bash
+   curl -sI https://getdashwise.nl/ | grep -i content-security-policy
+   curl -sI https://getdashwise.nl/support.html | grep -i location   # expect /support
+   ```
 
-## After deploying: get found
+### Rolling back
 
-1. Deploy, then check `https://getdashwise.nl/robots.txt`, `/sitemap.xml`, `/llms.txt` and `/site.webmanifest`.
-2. **Google Search Console:** add a Domain property, verify with the DNS TXT record (at your DNS provider), then Sitemaps > submit `https://getdashwise.nl/sitemap.xml`. Request indexing for `/` and `/nl/`.
-3. **Bing Webmaster Tools:** add the site (import from Search Console, or verify with a DNS TXT/CNAME record) and submit the same sitemap. Bing feeds Copilot and other AI assistants.
-4. Fill in the App Store link and the price TODOs (see above), then re-check the pages in the Rich Results Test (`search.google.com/test/rich-results`) and the social card in a share preview.
-5. After the app is live, add the App Store link to `sameAs`/`downloadUrl` in the JSON-LD and to `llms.txt`.
+Revert the bad commit and push. The runner deploys the previous state:
 
-`_preview/` (local screenshots) is git-ignored.
+```bash
+git revert <commit>
+git push
+```
 
-## info@getdashwise.nl with Cloudflare Email Routing
+### Troubleshooting
+
+| Symptom | Check |
+|---|---|
+| The run stays "Queued" | The runner is offline: `sudo ./svc.sh status` in the runner folder, or Settings > Actions > Runners. Check that the label is `dashwise-website`. |
+| `permission denied ... docker.sock` | `gh-runner` is not in the `docker` group. Add it, then restart the runner service. |
+| `port is already allocated` | Something else uses 8080. Set `WEB_PORT` for the runner, for example in the runner's `.env`, and point the proxy at that port. |
+| The site is up but shows an old version | Check that the last Deploy run is green, and clear the proxy's or the CDN's cache if you use one. |
+| Container logs | `docker logs dashwise-website` |
+
+## Editing the site
+
+- **Pages** are hand-written HTML in `public/`. Edit the English and the Dutch page together.
+- **Styles** live only in `public/assets/style.css`. Inline `style` attributes and `<script>` blocks are
+  blocked by the CSP, so they would not work.
+- **Images** must come from this site (`img-src 'self'`). Put them in `public/assets/`, give them
+  `width`, `height` and `alt`, and keep them small. Real screenshots go at the
+  `<!-- SCREENSHOT: ... -->` slots.
+- **Links** use clean URLs (`/support`, `/nl/privacy`). nginx serves `support.html` for `/support` and
+  redirects `/support.html` to `/support`, so canonicals, `hreflang` and the sitemap all use the clean
+  form.
+- **FAQ:** the FAQ JSON-LD on the support pages must stay identical to the visible FAQ. Change both.
+  JSON-LD is a data block, not a script, so the CSP does not block it.
+- **A new page:**
+  1. add the English and the Dutch file;
+  2. add `canonical` and `hreflang` (en, nl, x-default) in both;
+  3. add both URLs to `sitemap.xml`;
+  4. link the page from the header or footer.
+- **Android:** when the app ships, add the class `is-on` to `<section class="platform-android">` on both
+  index pages, and add the Play Store link.
+
+## Security
+
+Every response gets these headers (`docker/security-headers.conf`):
+
+- a strict Content Security Policy: only this site's own files, no scripts, no frames;
+- `Referrer-Policy: no-referrer`;
+- `X-Content-Type-Options: nosniff`;
+- `Permissions-Policy` that turns off camera, location, sensors and the like;
+- HSTS.
+
+The container runs nginx as a non-root user, with a read-only file system, no Linux capabilities and
+`no-new-privileges`. It only listens on localhost.
+
+**Keep this repository private.** It uses a self-hosted runner. In a public repository, someone's pull
+request could run code on your server.
+
+## Launch checklist
+
+**Before going live**
+
+- [ ] Replace the `TODO: App Store URL` links in `public/index.html` and `public/nl/index.html`, and add
+      `downloadUrl` to their JSON-LD.
+- [ ] Confirm the price in the JSON-LD (now `0 EUR`, with a `TODO` comment) once it is set in
+      App Store Connect.
+- [ ] Set "Last updated" on both privacy pages to the publication date, and remove the TODO comments.
+- [ ] Add real screenshots at the screenshot slots.
+- [ ] Update `lastmod` in `sitemap.xml` when pages change.
+
+**After going live: get found**
+
+1. Check `https://getdashwise.nl/robots.txt`, `/sitemap.xml`, `/llms.txt` and `/site.webmanifest`.
+2. **Google Search Console:** add a Domain property and verify it with the DNS TXT record. Submit
+   `https://getdashwise.nl/sitemap.xml`, then request indexing for `/` and `/nl/`.
+3. **Bing Webmaster Tools:** import the site from Search Console, or verify it with DNS. Submit the same
+   sitemap. Bing also feeds Copilot and other AI assistants.
+4. Test the index pages in the [Rich Results Test](https://search.google.com/test/rich-results), and the
+   social card with a share preview in WhatsApp or LinkedIn.
+5. Once the app is in the App Store, add its link to `sameAs` and `downloadUrl` in the JSON-LD, and to
+   `llms.txt`.
+
+## E-mail: info@getdashwise.nl
+
+The site only shows the address; it does not handle mail. One way to receive it, if the domain's DNS is
+on Cloudflare, is Email Routing:
 
 1. Cloudflare dashboard > the `getdashwise.nl` zone > Email > Email Routing > Get started.
-2. Add the custom address `info` with destination your own mailbox. Confirm the verification e-mail
-   sent to that mailbox.
-3. Let Cloudflare add the MX and SPF records when it asks.
-4. Send a test mail to info@getdashwise.nl. Email Routing only forwards. To reply as info@, add it as a
-   "send as" address in your mail client through an SMTP service, and add that service to the SPF record.
+2. Add the address `info` and forward it to your own mailbox. Confirm the verification e-mail.
+3. Let Cloudflare add the MX and SPF records.
+4. Send a test mail. To reply *as* info@getdashwise.nl, add it as a "send as" address in your mail
+   client through an SMTP service, and add that service to the SPF record.
+
+Any mail host works instead: point the MX records at it.
