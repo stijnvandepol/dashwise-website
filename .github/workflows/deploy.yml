@@ -20,24 +20,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build
-        run: docker compose build --pull
-
-      - name: Start
-        run: docker compose up -d --remove-orphans
-
-      - name: Check
-        run: |
-          port="${WEB_PORT:-8080}"
-          for i in $(seq 1 15); do
-            if curl -fsS "http://127.0.0.1:${port}/healthz" >/dev/null; then break; fi
-            sleep 2
-          done
-          curl -fsS -o /dev/null "http://127.0.0.1:${port}/"
-          curl -fsS -o /dev/null "http://127.0.0.1:${port}/nl/"
-          curl -fsS -o /dev/null "http://127.0.0.1:${port}/support"
-          test "$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:${port}/does-not-exist")" = 404
-
-      - name: Clean up old images
-        if: always()
-        run: docker image prune -f
+      - name: Deploy
+        run: ./deploy.sh

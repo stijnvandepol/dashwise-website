@@ -41,7 +41,8 @@ docker/
   security-headers.conf     CSP and other security headers, included in every location
 Dockerfile                  nginx-unprivileged image with the config and public/
 compose.yaml                Container settings (localhost only, read-only, no capabilities)
-.github/workflows/deploy.yml  Build, restart and smoke-test on every push to main
+deploy.sh                   Remove the old container, start the new one, check it, clean up
+.github/workflows/deploy.yml  Runs deploy.sh on the server's runner on every push to main
 ```
 
 `_preview/` holds local screenshots and is git-ignored.
@@ -63,13 +64,24 @@ To preview the HTML without Docker, run `python3 -m http.server -d public 8000`.
 ### How it works
 
 On every push to `main`, and on demand through Actions > Deploy > Run workflow, the runner on the
-server:
+server checks out the repository and runs [`deploy.sh`](deploy.sh), which:
 
-1. checks out the repository;
-2. builds the image (`docker compose build --pull`);
-3. replaces the running container (`docker compose up -d --remove-orphans`);
+1. builds the new image (`docker compose build --pull`);
+2. removes the old container (`docker compose down --remove-orphans`);
+3. starts the new one (`docker compose up -d`);
 4. checks `/healthz`, `/`, `/nl/` and `/support`, and that a missing page returns 404;
-5. removes old images.
+5. removes old images and build cache older than a week.
+
+The site is down for a few seconds between steps 2 and 3. The compose project is always named
+`dashwise-website`, so a manual run and a workflow run manage the same container.
+
+**Deploy by hand** on the server, from any checkout of this repository:
+
+```bash
+./deploy.sh --pull
+```
+
+`--pull` resets the checkout to the latest `origin/main` first (local changes in that checkout are lost).
 
 If a check fails, the run turns red in the Actions tab. The new container is then already running, so
 fix the problem or roll back (see below).

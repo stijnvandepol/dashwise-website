@@ -1,3 +1,5 @@
+name: dashwise-website
+
 services:
   web:
     build: .
