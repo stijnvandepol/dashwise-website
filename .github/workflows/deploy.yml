@@ -17,6 +17,9 @@ jobs:
     # The self-hosted runner on the web server; it builds and runs the container there.
     runs-on: [self-hosted, linux, dashwise-website]
     timeout-minutes: 10
+    env:
+      # Optional: with this secret set, the Cloudflare Tunnel container runs too.
+      TUNNEL_TOKEN: ${{ secrets.CLOUDFLARE_TUNNEL_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
@@ -24,7 +27,12 @@ jobs:
         run: docker compose build --pull
 
       - name: Start
-        run: docker compose up -d --remove-orphans
+        run: |
+          if [ -n "$TUNNEL_TOKEN" ]; then
+            docker compose --profile tunnel up -d --remove-orphans
+          else
+            docker compose up -d --remove-orphans
+          fi
 
       - name: Check
         run: |

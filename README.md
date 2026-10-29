@@ -74,7 +74,7 @@ server:
 If a check fails, the run turns red in the Actions tab. The new container is then already running, so
 fix the problem or roll back (see below).
 
-The container listens only on `127.0.0.1:8080`. A reverse proxy on the same server terminates HTTPS
+The container listens only on `127.0.0.1:8080`. A Cloudflare Tunnel (or a reverse proxy) makes it public and handles HTTPS
 for `getdashwise.nl`.
 
 ### One-time server setup
@@ -100,11 +100,33 @@ You need a Linux server with Docker, the Docker Compose plugin and a reverse pro
 
    The runner must show as **Idle** under Settings > Actions > Runners.
 
-3. **DNS:** add A (and AAAA) records for `getdashwise.nl` and `www.getdashwise.nl` that point at the
-   server.
+3. **Make it public with Cloudflare.** The domain's DNS must be on Cloudflare. Choose one:
 
-4. **Reverse proxy:** forward the domain to the container and redirect `www` to the apex. With Caddy
-   (HTTPS certificates are automatic):
+   **A. Cloudflare Tunnel in this stack (recommended, no open ports):**
+   1. Cloudflare dashboard > Zero Trust > Networks > Tunnels > Create a tunnel > Cloudflared.
+      Name it `dashwise-website`. Copy the **token** (the long string after `--token`); skip the install step.
+   2. In the tunnel, add **Public hostnames**:
+      - `getdashwise.nl` → Service `HTTP`, URL `web:8080`
+      - `www.getdashwise.nl` → Service `HTTP`, URL `web:8080`
+   3. In this GitHub repo: Settings > Secrets and variables > Actions > New repository secret,
+      name `CLOUDFLARE_TUNNEL_TOKEN`, value the token. Never commit the token.
+   4. Run the Deploy workflow. It now also starts the `dashwise-website-tunnel` container, and the
+      tunnel shows as **Healthy** in Cloudflare.
+
+   **B. cloudflared already runs on the server:** add the public hostnames to that tunnel with URL
+   `localhost:8080` (or `http://127.0.0.1:8080`). No secret needed.
+
+   **Then, in the Cloudflare dashboard for `getdashwise.nl`:**
+   - SSL/TLS > Overview: **Full**. The tunnel carries the traffic encrypted; the container itself
+     speaks HTTP.
+   - SSL/TLS > Edge Certificates: **Always Use HTTPS** on.
+   - Rules > Redirect Rules: redirect `www.getdashwise.nl/*` to `https://getdashwise.nl/${1}` (301),
+     or leave both hostnames serving the same site; the pages carry a canonical link either way.
+   - Leave Cloudflare Web Analytics and other script injection (Rocket Loader, Email Address
+     Obfuscation) **off**. They add scripts or third-party requests that the CSP blocks and the privacy
+     page rules out.
+
+4. **Without Cloudflare:** point a reverse proxy at `127.0.0.1:8080` instead, for example with Caddy:
 
    ```
    getdashwise.nl {
@@ -117,11 +139,7 @@ You need a Linux server with Docker, the Docker Compose plugin and a reverse pro
    ```
 
    Caddy writes no access log unless you add a `log` directive; keep it that way, because the privacy
-   page promises logs without IP addresses. With nginx or Traefik, turn the access log off for this
-   site or use a format without the client address.
-
-   With nginx or Traefik, proxy to `http://127.0.0.1:8080`, keep the `Host` header, and let the proxy
-   handle the certificates.
+   page promises logs without IP addresses.
 
 5. **First deploy:** Actions > Deploy > Run workflow. Then check:
 
