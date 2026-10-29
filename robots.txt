@@ -1,0 +1,5 @@
+# Everything is public. AI and search crawlers are deliberately not blocked.
+User-agent: *
+Allow: /
+
+Sitemap: https://getdashwise.nl/sitemap.xml

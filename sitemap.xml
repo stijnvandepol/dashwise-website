@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://getdashwise.nl/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://getdashwise.nl/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://getdashwise.nl/nl/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://getdashwise.nl/"/>
+  </url>
+  <url>
+    <loc>https://getdashwise.nl/nl/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://getdashwise.nl/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://getdashwise.nl/nl/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://getdashwise.nl/"/>
+  </url>
+  <url>
+    <loc>https://getdashwise.nl/support</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://getdashwise.nl/support"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://getdashwise.nl/nl/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://getdashwise.nl/support"/>
+  </url>
+  <url>
+    <loc>https://getdashwise.nl/nl/support</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://getdashwise.nl/support"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://getdashwise.nl/nl/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://getdashwise.nl/support"/>
+  </url>
+  <url>
+    <loc>https://getdashwise.nl/privacy</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://getdashwise.nl/privacy"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://getdashwise.nl/nl/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://getdashwise.nl/privacy"/>
+  </url>
+  <url>
+    <loc>https://getdashwise.nl/nl/privacy</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://getdashwise.nl/privacy"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://getdashwise.nl/nl/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://getdashwise.nl/privacy"/>
+  </url>
+</urlset>

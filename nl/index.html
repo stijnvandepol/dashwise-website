@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashwise - OBD2 app iPhone: dashboard &amp; rittenregistratie</title>
+<meta name="description" content="OBD2 app voor iPhone met ELM327 (Bluetooth LE of Wi-Fi): live motordata, foutcodes uitlezen en een rittenregistratie. Geen account, geen tracking.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#111418" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f2f2f2" media="(prefers-color-scheme: light)">
+<link rel="canonical" href="https://getdashwise.nl/nl/">
+<link rel="alternate" hreflang="en" href="https://getdashwise.nl/">
+<link rel="alternate" hreflang="nl" href="https://getdashwise.nl/nl/">
+<link rel="alternate" hreflang="x-default" href="https://getdashwise.nl/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dashwise">
+<meta property="og:title" content="Dashwise - OBD2 app iPhone: dashboard &amp; rittenregistratie">
+<meta property="og:description" content="OBD2 app voor iPhone met ELM327 (Bluetooth LE of Wi-Fi): live motordata, foutcodes uitlezen en een rittenregistratie. Geen account, geen tracking.">
+<meta property="og:url" content="https://getdashwise.nl/nl/">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://getdashwise.nl/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dashwise app-icoon met een segmentige toerentalbalk en de tekst Dashwise, OBD2-dashboard en rittenregistratie voor iPhone">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dashwise - OBD2 app iPhone: dashboard &amp; rittenregistratie">
+<meta name="twitter:description" content="OBD2 app voor iPhone met ELM327 (Bluetooth LE of Wi-Fi): live motordata, foutcodes uitlezen en een rittenregistratie. Geen account, geen tracking.">
+<meta name="twitter:image" content="https://getdashwise.nl/og-image.png">
+<meta name="twitter:image:alt" content="Dashwise app-icoon met een segmentige toerentalbalk en de tekst Dashwise, OBD2-dashboard en rittenregistratie voor iPhone">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/mark.svg" type="image/svg+xml" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/assets/style.css">
+<!-- TODO: confirm offers.price (0 EUR) once Pricing and Availability is set in App Store Connect; add downloadUrl/installUrl with the App Store link -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://getdashwise.nl/#organization",
+      "name": "Dashwise",
+      "url": "https://getdashwise.nl/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://getdashwise.nl/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "email": "info@getdashwise.nl",
+      "founder": {
+        "@id": "https://getdashwise.nl/#author"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://getdashwise.nl/#website",
+      "name": "Dashwise",
+      "url": "https://getdashwise.nl/",
+      "inLanguage": [
+        "en",
+        "nl"
+      ],
+      "publisher": {
+        "@id": "https://getdashwise.nl/#organization"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://getdashwise.nl/#author",
+      "name": "Stijn van de Pol",
+      "url": "https://getdashwise.nl/"
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://getdashwise.nl/nl/#app",
+      "name": "Dashwise",
+      "url": "https://getdashwise.nl/nl/",
+      "description": "Dashwise is een OBD2 app voor iPhone. Het toont live motordata van een ELM327 OBD2-adapter via Bluetooth LE of Wi-Fi, leest foutcodes uit, houdt een rittenregistratie bij en meet rondetijden. Geen account, geen tracking.",
+      "inLanguage": "nl",
+      "operatingSystem": "iOS",
+      "applicationCategory": "UtilitiesApplication",
+      "softwareRequirements": "iOS 26 of nieuwer; ELM327-compatibele OBD2-adapter met Bluetooth LE of Wi-Fi",
+      "featureList": [
+        "Live motordata van een ELM327-adapter (Bluetooth LE of Wi-Fi)",
+        "Foutcodes (opgeslagen, lopend, permanent), gereedheidstests en freeze-framedata",
+        "Rittenregistratie met start- en eindadres, te exporteren naar GPX, VBO en CSV",
+        "GPS-rondetijden met eigen start/finish- en sectorlijnen",
+        "Live Activity op het toegangsscherm en CarPlay-dashboard",
+        "Waarschuwingen met je eigen grenzen",
+        "Geen account, geen advertenties, geen tracking"
+      ],
+      "image": "https://getdashwise.nl/icon-512.png",
+      "author": {
+        "@id": "https://getdashwise.nl/#author"
+      },
+      "publisher": {
+        "@id": "https://getdashwise.nl/#organization"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Naar de inhoud</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/nl/"><img src="/assets/mark.svg" alt="" width="32" height="32"><span>Dashwise</span></a>
+    <nav class="site-nav" aria-label="Hoofdmenu">
+      <a href="#features">Functies</a>
+      <a href="#need">Wat heb je nodig</a>
+      <a href="#faq">Veelgestelde vragen</a>
+      <a href="/nl/support">Support</a>
+      <a href="/nl/privacy">Privacy</a>
+      <a class="lang" href="/" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">OBD2-dashboard voor iPhone</p>
+      <h1 class="display" id="hero-title">OBD2 app voor iPhone. Je auto in één oogopslag.</h1>
+      <p class="lead">Dashwise is een OBD2 app voor iPhone die live motordata toont van een ELM327-adapter via Bluetooth LE of Wi-Fi. Lees foutcodes uit, houd een rittenregistratie bij en meet rondetijden, allemaal privé op je iPhone.</p>
+      <div class="cta-row">
+        <!-- TODO: App Store URL -->
+        <a class="btn" href="#get-the-app">Download in de App Store</a>
+        <a class="btn btn-ghost" href="#features">Bekijk wat het doet</a>
+      </div>
+      <p class="note">Geen account. Geen advertenties. Geen tracking.</p>
+    </div>
+    <!-- Dashboard impression, built in HTML/CSS. Values are an example, not a screenshot. -->
+    <div class="cluster" role="img" aria-label="Voorbeeld van het Dashwise-dashboard: 5.400 toeren per minuut, 112 kilometer per uur, koelvloeistof 89 graden Celsius, met een toerentalbalk dicht bij de waarschuwingszone.">
+      <p class="cluster-title" aria-hidden="true"><span>Dash</span><span>Example</span></p>
+      <ul class="rev" aria-hidden="true">
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+      </ul>
+      <dl class="tiles" aria-hidden="true">
+        <div class="tile tile-wide"><dt>Engine speed</dt><dd>5400<span class="unit">rpm</span></dd></div>
+        <div class="tile"><dt>Speed</dt><dd>112<span class="unit">km/h</span></dd></div>
+        <div class="tile"><dt>Coolant</dt><dd class="state-ok">89<span class="unit">&deg;C</span></dd></div>
+      </dl>
+    </div>
+  </div>
+  <!-- SCREENSHOT: hero, iPhone 6.9", Dash page in the Race theme, simulator or real car -->
+</section>
+
+<!-- LIVE DASHBOARD -->
+<section id="features" aria-labelledby="live-title">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Live dashboard</p>
+      <h2 id="live-title">Een OBD2-dashboard dat je in één blik leest.</h2>
+      <p class="lead">Grote cijfers die je in één oogopslag afleest, en een vloeiende toerentalbalk met redline- en waarschuwingszones voor jouw motor.</p>
+      <ul class="checks">
+        <li>Toerental, snelheid, koelvloeistof, inlaatlucht, gaspedaal, motorbelasting, accuspanning en meer</li>
+        <li>Een sensorlijst met elke waarde die je auto ondersteunt</li>
+        <li>Je eigen grenzen voor koelvloeistof, spanning en toerental: een rustig gekleurd kader, een banner en optioneel een toon als een waarde buiten bereik komt</li>
+      </ul>
+    </div>
+    <div class="cluster" role="img" aria-label="Voorbeeld van een sensorlijst: accuspanning 14,1 volt, inlaatlucht 31 graden Celsius, gaspedaal 42 procent, motorbelasting 63 procent.">
+      <div class="live" aria-hidden="true">
+        <div class="row"><span>BATTERY</span><b>14,1 V</b></div>
+        <div class="row"><span>INTAKE</span><b>31 &deg;C</b></div>
+        <div class="row"><span>THROTTLE</span><b>42 %</b></div>
+        <div class="row"><span>LOAD</span><b>63 %</b></div>
+        <div class="row"><span>COOLANT</span><b class="state-caution">104 &deg;C</b></div>
+      </div>
+    </div>
+  </div>
+  <!-- SCREENSHOT: Sensors page with a warning banner -->
+</section>
+
+<!-- FAULT CODES -->
+<section aria-labelledby="dtc-title">
+  <div class="wrap split reverse">
+    <div>
+      <p class="eyebrow">Foutcodes</p>
+      <h2 id="dtc-title">Foutcodes uitlezen: weet wat het motorstoringslampje betekent.</h2>
+      <p class="lead">Lees opgeslagen, lopende en permanente foutcodes (DTC's) uit met een heldere omschrijving.</p>
+      <ul class="checks">
+        <li>Gereedheidstests (readiness monitors) en freeze-framedata</li>
+        <li>Foutcodes veilig wissen: alleen met de motor uit en na twee bevestigingen</li>
+      </ul>
+      <p class="note">Wissen zet ook de gereedheidstests terug. Los eerst de oorzaak op.</p>
+    </div>
+    <div class="cluster" role="img" aria-label="Voorbeeld van een foutcodelijst: P0301 opgeslagen, P0420 lopend, P0171 opgeslagen.">
+      <ul class="dtc" aria-hidden="true">
+        <li><span class="c">P0301</span><span>Cylinder 1 misfire</span><span class="k state-danger">Stored</span></li>
+        <li><span class="c">P0420</span><span>Catalyst efficiency</span><span class="k state-caution">Pending</span></li>
+        <li><span class="c">P0171</span><span>System too lean</span><span class="k state-danger">Stored</span></li>
+      </ul>
+    </div>
+  </div>
+  <!-- SCREENSHOT: Diag page with fault codes -->
+</section>
+
+<!-- TRIP LOGBOOK -->
+<section aria-labelledby="trips-title">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Rittenregistratie</p>
+      <h2 id="trips-title">Een rittenregistratie app voor elke rit.</h2>
+      <p class="lead">Leg ritten automatisch of handmatig vast. Afstand, duur, topsnelheid en de route van elke rit, met start- en eindadres.</p>
+      <ul class="checks">
+        <li>Exporteer je ritten voor kilometerregistratie</li>
+        <li>Exporteer naar GPX, VBO of CSV en deel met de apps die je al gebruikt</li>
+        <li>Adressen worden op je iPhone met Apple opgezocht en blijven op je iPhone</li>
+      </ul>
+    </div>
+    <div class="cluster trip" role="img" aria-label="Voorbeeld van een rit van Eindhoven naar Utrecht: 42,8 kilometer in 38 minuten, topsnelheid 118 kilometer per uur.">
+      <div aria-hidden="true">
+        <p class="route"><b>Thuis, Eindhoven</b> naar <b>Kantoor, Utrecht</b></p>
+      </div>
+      <dl class="stats" aria-hidden="true">
+        <div class="tile"><dt>Distance</dt><dd>42,8<span class="unit">km</span></dd></div>
+        <div class="tile"><dt>Time</dt><dd>38<span class="unit">min</span></dd></div>
+        <div class="tile"><dt>Top</dt><dd>118<span class="unit">km/h</span></dd></div>
+      </dl>
+    </div>
+  </div>
+  <!-- SCREENSHOT: Trips list and a trip detail with route -->
+</section>
+
+<!-- TRACK DAYS -->
+<section aria-labelledby="track-title">
+  <div class="wrap split reverse">
+    <div>
+      <p class="eyebrow">Trackdays</p>
+      <h2 id="track-title">Rondetijden voor het circuit.</h2>
+      <p class="lead">GPS-rondetijden met je eigen start/finish- en sectorlijnen. Beste ronde, laatste ronde en live delta, plus een schakellicht dat je zelf instelt.</p>
+      <p class="note">Rondetijden meten is bedoeld voor circuits, niet voor de openbare weg.</p>
+    </div>
+    <div class="cluster" role="img" aria-label="Voorbeeld van rondetijden: laatste ronde 1 minuut 42,318 seconden, delta min 0,214 seconden.">
+      <div aria-hidden="true">
+        <p class="cluster-title"><span>Last lap</span><span>Lap 7</span></p>
+        <p class="lap">1:42.318</p>
+        <p class="delta state-ok">-0.214</p>
+      </div>
+    </div>
+  </div>
+  <!-- SCREENSHOT: Track page during a session -->
+</section>
+
+<!-- LIVE ACTIVITY -->
+<section aria-labelledby="live-activity-title">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Toegangsscherm en CarPlay</p>
+      <h2 id="live-activity-title">Je belangrijkste waarde, één blik weg.</h2>
+      <p class="lead">Een Live Activity toont je belangrijkste waarde en waarschuwingen op het toegangsscherm en in het CarPlay-dashboard.</p>
+      <p class="note">Dashwise toont wat je auto doorgeeft. Houd je ogen op de weg en laat een passagier de app bedienen tijdens het rijden.</p>
+    </div>
+    <!-- SCREENSHOT: Live Activity on the Lock Screen and in the CarPlay Dashboard -->
+    <div class="screenshot-slot">Hier komt een screenshot van de Live Activity.</div>
+  </div>
+</section>
+
+<!-- THEMES -->
+<section aria-labelledby="themes-title">
+  <div class="wrap">
+    <p class="eyebrow">Maak het jouwe</p>
+    <h2 id="themes-title">Negen thema's, vijf dashboardstijlen.</h2>
+    <p class="lead">Dag- en nachtthema's, je eigen accentkleur, en de keuze met welk scherm Dashwise opent: dashboard of ritten.</p>
+    <div class="swatches" aria-hidden="true">
+      <div class="swatch sw-race"><span>Race</span><span class="bar"></span></div>
+      <div class="swatch sw-rosso"><span>Rosso</span><span class="bar"></span></div>
+      <div class="swatch sw-day"><span>Day</span><span class="bar"></span></div>
+    </div>
+    <!-- SCREENSHOT: Theme picker -->
+  </div>
+</section>
+
+<!-- PRIVATE BY DESIGN -->
+<section aria-labelledby="private-title">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Privé door ontwerp</p>
+      <h2 id="private-title">Je gegevens blijven op je iPhone.</h2>
+      <p class="lead">Geen account, geen advertenties, geen tracking. Er wordt niets geüpload.</p>
+    </div>
+    <div>
+      <ul class="checks">
+        <li>Motordata en ritten staan alleen op je toestel</li>
+        <li>Kaartbeelden komen van Apple Kaarten zolang de kaart van een rit in beeld is; de route zelf wordt nooit verstuurd</li>
+        <li>Alleen het begin- en eindpunt van een rit gaan naar Apple om de adressen op te zoeken</li>
+      </ul>
+      <p class="note"><a href="/nl/privacy">Lees het privacybeleid</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU NEED -->
+<section id="need" aria-labelledby="need-title">
+  <div class="wrap">
+    <p class="eyebrow">Wat heb je nodig</p>
+    <h2 id="need-title">Een ELM327-adapter en een auto.</h2>
+    <div class="grid-3">
+      <div class="card"><h3>Een adapter</h3><p>Een ELM327-compatibele OBD2-adapter met Bluetooth LE of Wi-Fi, bijvoorbeeld Konnwei KW905, Vgate vLinker MC+ of andere BLE/Wi-Fi-modellen.</p></div>
+      <div class="card"><h3>Een auto</h3><p>Een auto met OBD2-aansluiting: vrijwel alle benzineauto's vanaf 2001 in de EU (1996 in de VS) en diesels vanaf 2004.</p></div>
+      <div class="card"><h3>Geen Classic Bluetooth</h3><p>Classic Bluetooth-adapters zonder "Made for iPhone"-ondersteuning kunnen niet met een iPhone verbinden. Dat is een beperking van iOS, niet van Dashwise.</p></div>
+    </div>
+    <p class="note">Nog geen adapter? Probeer Dashwise met de ingebouwde simulator. <a href="/nl/support#adapters">Welke OBD2-adapters werken met iPhone</a></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" aria-labelledby="faq-title">
+  <div class="wrap prose-narrow">
+    <p class="eyebrow">Vragen</p>
+    <h2 id="faq-title">Veelgestelde vragen.</h2>
+<div class="faq">
+<details><summary>Werkt Dashwise met mijn auto?</summary>
+<p>Waarschijnlijk wel als je auto een OBD2-aansluiting heeft: dat zijn vrijwel alle benzineauto's vanaf 2001 in de EU (1996 in de VS) en diesels vanaf 2004. Welke waarden je ziet hangt af van wat je auto doorgeeft. Dashwise is getest op een Toyota Corolla (ISO 9141-2, K-line) met een Konnwei KW905-adapter.</p></details>
+<details><summary>Welke OBD2-adapters werken op iPhone?</summary>
+<p>ELM327-adapters met Bluetooth LE of Wi-Fi, bijvoorbeeld de Konnwei KW905 of Vgate vLinker MC+. Classic Bluetooth-adapters zonder Apple's "Made for iPhone"-chip kunnen niet met een iPhone verbinden; dat is een beperking van iOS. Zie <a href="/nl/support#adapters">welke adapters werken</a>.</p></details>
+<details><summary>Kan ik met Dashwise foutcodes uitlezen en wissen?</summary>
+<p>Ja. Dashwise leest opgeslagen, lopende en permanente foutcodes (DTC's) uit met een heldere omschrijving, plus de gereedheidstests en freeze-framedata. Wissen kan alleen met de motor uit en na twee bevestigingen.</p></details>
+<details><summary>Kan ik Dashwise gebruiken als rittenregistratie?</summary>
+<p>Ja. Dashwise legt ritten automatisch of handmatig vast, met afstand, duur, topsnelheid, route en start- en eindadres, en exporteert ze naar GPX, VBO of CSV, plus een kilometerlijst die je naar je werkgever stuurt.</p></details>
+<details><summary>Verzamelt Dashwise mijn gegevens?</summary>
+<p>Nee. Er is geen account, geen analytics, geen advertenties en geen tracking. Motordata en ritten blijven op je iPhone. Alleen het begin- en eindpunt van een rit gaan naar Apple om de adressen op te zoeken. Zie het <a href="/nl/privacy">privacybeleid</a>.</p></details>
+<details><summary>Is er een Android-versie?</summary>
+<p>Nog niet. Er komt een Android-versie die eruitziet en werkt als de iPhone-app.</p></details>
+</div>
+    <p class="note">Meer hulp: <a href="/nl/support">Dashwise support</a></p>
+  </div>
+</section>
+
+<!-- GET THE APP -->
+<section id="get-the-app" aria-labelledby="get-title">
+  <div class="wrap">
+    <h2 id="get-title">Download Dashwise voor iPhone.</h2>
+    <p class="lead">Vereist iOS 26 of nieuwer.</p>
+    <div class="cta-row">
+      <!-- TODO: App Store URL -->
+      <a class="btn" href="#get-the-app">Download in de App Store</a>
+    </div>
+    <p class="note">De app is voorlopig alleen in het Engels. Dashwise toont wat je auto doorgeeft. Het vervangt de waarschuwingslampjes van je auto of een professionele diagnose niet.</p>
+  </div>
+</section>
+
+<!-- ANDROID: hidden until the Android app ships. Add the class "is-on" to .platform-android to show it. -->
+<section class="platform-android" aria-labelledby="android-title">
+  <div class="wrap">
+    <p class="eyebrow">Android</p>
+    <h2 id="android-title">Android-versie komt eraan.</h2>
+    <p class="lead">De Android-app gaat er precies zo uitzien en werken als de iPhone-app.</p>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Stijn van de Pol</p>
+    <nav aria-label="Voettekst">
+      <a href="/nl/support">Support</a>
+      <a href="/nl/privacy">Privacy</a>
+      <a href="mailto:info@getdashwise.nl">info@getdashwise.nl</a>
+      <a class="lang" href="/" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

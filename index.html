@@ -3,36 +3,139 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dashwise - OBD2 dashboard and trip logbook for iPhone</title>
-<meta name="description" content="Live engine data, fault codes, a trip logbook and lap timing from your OBD-II adapter. Private by design: no account, nothing leaves your iPhone.">
+<title>Dashwise - OBD2 app for iPhone: dashboard &amp; trip logbook</title>
+<meta name="description" content="Live OBD-II dashboard for iPhone with ELM327 Bluetooth LE or Wi-Fi adapters. Read fault codes, keep a trip logbook, time laps. No account, no tracking.">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#111418" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f2f2f2" media="(prefers-color-scheme: light)">
 <link rel="canonical" href="https://getdashwise.nl/">
-<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="alternate" hreflang="en" href="https://getdashwise.nl/">
+<link rel="alternate" hreflang="nl" href="https://getdashwise.nl/nl/">
+<link rel="alternate" hreflang="x-default" href="https://getdashwise.nl/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dashwise">
+<meta property="og:title" content="Dashwise - OBD2 app for iPhone: dashboard &amp; trip logbook">
+<meta property="og:description" content="Live OBD-II dashboard for iPhone with ELM327 Bluetooth LE or Wi-Fi adapters. Read fault codes, keep a trip logbook, time laps. No account, no tracking.">
+<meta property="og:url" content="https://getdashwise.nl/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta property="og:image" content="https://getdashwise.nl/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dashwise app icon with a segmented rev bar and the text Dashwise, OBD2 dashboard and trip logbook for iPhone">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dashwise - OBD2 app for iPhone: dashboard &amp; trip logbook">
+<meta name="twitter:description" content="Live OBD-II dashboard for iPhone with ELM327 Bluetooth LE or Wi-Fi adapters. Read fault codes, keep a trip logbook, time laps. No account, no tracking.">
+<meta name="twitter:image" content="https://getdashwise.nl/og-image.png">
+<meta name="twitter:image:alt" content="Dashwise app icon with a segmented rev bar and the text Dashwise, OBD2 dashboard and trip logbook for iPhone">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/mark.svg" type="image/svg+xml" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/assets/style.css">
+<!-- TODO: confirm offers.price (0 EUR) once Pricing and Availability is set in App Store Connect; add downloadUrl/installUrl with the App Store link -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://getdashwise.nl/#organization",
+      "name": "Dashwise",
+      "url": "https://getdashwise.nl/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://getdashwise.nl/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "email": "info@getdashwise.nl",
+      "founder": {
+        "@id": "https://getdashwise.nl/#author"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://getdashwise.nl/#website",
+      "name": "Dashwise",
+      "url": "https://getdashwise.nl/",
+      "inLanguage": [
+        "en",
+        "nl"
+      ],
+      "publisher": {
+        "@id": "https://getdashwise.nl/#organization"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://getdashwise.nl/#author",
+      "name": "Stijn van de Pol",
+      "url": "https://getdashwise.nl/"
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://getdashwise.nl/#app",
+      "name": "Dashwise",
+      "url": "https://getdashwise.nl/",
+      "description": "Dashwise is an OBD2 app for iPhone. It shows live engine data from an ELM327 OBD-II adapter over Bluetooth LE or Wi-Fi, reads fault codes, keeps a trip logbook and times laps. No account, no tracking.",
+      "inLanguage": "en",
+      "operatingSystem": "iOS",
+      "applicationCategory": "UtilitiesApplication",
+      "softwareRequirements": "iOS 26 or later; ELM327-compatible OBD-II adapter with Bluetooth LE or Wi-Fi",
+      "featureList": [
+        "Live engine data from an ELM327 adapter (Bluetooth LE or Wi-Fi)",
+        "Fault codes (stored, pending, permanent), readiness monitors and freeze frame data",
+        "Trip logbook with start and end addresses, exportable to GPX, VBO and CSV",
+        "GPS lap timing with your own start/finish and sector lines",
+        "Lock Screen Live Activity and CarPlay Dashboard",
+        "Warnings with your own limits",
+        "No account, no ads, no tracking"
+      ],
+      "image": "https://getdashwise.nl/icon-512.png",
+      "author": {
+        "@id": "https://getdashwise.nl/#author"
+      },
+      "publisher": {
+        "@id": "https://getdashwise.nl/#organization"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="./"><img src="assets/mark.svg" alt="" width="32" height="32"><span>Dashwise</span></a>
+    <a class="brand" href="/"><img src="/assets/mark.svg" alt="" width="32" height="32"><span>Dashwise</span></a>
     <nav class="site-nav" aria-label="Main">
       <a href="#features">Features</a>
       <a href="#need">What you need</a>
-      <a href="support.html">Support</a>
-      <a href="privacy.html">Privacy</a>
+      <a href="#faq">FAQ</a>
+      <a href="/support">Support</a>
+      <a href="/privacy">Privacy</a>
+      <a class="lang" href="/nl/" hreflang="nl" lang="nl">Nederlands</a>
     </nav>
   </div>
 </header>
-
 <main id="main">
 
 <!-- HERO -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap split">
     <div>
-      <p class="eyebrow">OBD2 dashboard for iPhone</p>
-      <h1 class="display" id="hero-title">Your car, at a glance.</h1>
-      <p class="lead">Plug a Bluetooth LE or Wi-Fi ELM327 adapter into the OBD-II port and see what your engine is doing, live. Fault codes, a trip logbook and lap timing, all private on your iPhone.</p>
+      <p class="eyebrow">OBD-II dashboard for iPhone</p>
+      <h1 class="display" id="hero-title">OBD2 app for iPhone. Your car, at a glance.</h1>
+      <p class="lead">Dashwise is an OBD2 app for iPhone that shows live engine data from an ELM327 adapter over Bluetooth LE or Wi-Fi. Read fault codes, keep a trip logbook and time laps, all private on your iPhone.</p>
       <div class="cta-row">
         <!-- TODO: App Store URL -->
         <a class="btn" href="#get-the-app">Get it on the App Store</a>
@@ -63,7 +166,7 @@
   <div class="wrap split">
     <div>
       <p class="eyebrow">Live dashboard</p>
-      <h2 id="live-title">Numbers you can read in a glance.</h2>
+      <h2 id="live-title">An OBD-II dashboard you can read at a glance.</h2>
       <p class="lead">Large numerals made to be read at a glance, and a smooth segmented rev bar with redline and caution zones for your engine.</p>
       <ul class="checks">
         <li>Engine speed, road speed, coolant, intake, throttle, load, battery voltage and more</li>
@@ -89,7 +192,7 @@
   <div class="wrap split reverse">
     <div>
       <p class="eyebrow">Fault codes</p>
-      <h2 id="dtc-title">Know what the check-engine light means.</h2>
+      <h2 id="dtc-title">Read fault codes and know what the check-engine light means.</h2>
       <p class="lead">Read stored, pending and permanent diagnostic trouble codes with plain-English descriptions.</p>
       <ul class="checks">
         <li>Readiness monitors and freeze frame data</li>
@@ -113,17 +216,17 @@
   <div class="wrap split">
     <div>
       <p class="eyebrow">Trip logbook</p>
-      <h2 id="trips-title">Every drive, logged.</h2>
+      <h2 id="trips-title">A trip logbook and mileage log for every drive.</h2>
       <p class="lead">Record trips automatically or by hand. Distance, duration, top speed and the route of every drive, with start and end addresses.</p>
       <ul class="checks">
-        <li>Export your trips for mileage claims <span class="tag">Coming soon</span></li>
+        <li>Export your trips for mileage claims</li>
         <li>Export to GPX, VBO or CSV and share with the apps you already use</li>
         <li>Addresses are looked up on your iPhone with Apple and stay on your iPhone</li>
       </ul>
     </div>
-    <div class="cluster trip" role="img" aria-label="Example of a trip: 42.8 kilometres in 38 minutes, top speed 118 kilometres per hour.">
+    <div class="cluster trip" role="img" aria-label="Example of a trip from Eindhoven to Utrecht: 42.8 kilometres in 38 minutes, top speed 118 kilometres per hour.">
       <div aria-hidden="true">
-        <p class="route"><b>Hoofdstraat 12, Eindhoven</b> to <b>Kerkplein 3, Utrecht</b></p>
+        <p class="route"><b>Home, Eindhoven</b> to <b>Office, Utrecht</b></p>
       </div>
       <dl class="stats" aria-hidden="true">
         <div class="tile"><dt>Distance</dt><dd>42.8<span class="unit">km</span></dd></div>
@@ -198,7 +301,7 @@
         <li>Map images come from Apple Maps while a trip's map is on screen; the route itself is never sent</li>
         <li>Only the start and end points of a trip are sent to Apple to look up their addresses</li>
       </ul>
-      <p class="note"><a href="privacy.html">Read the privacy policy</a></p>
+      <p class="note"><a href="/privacy">Read the privacy policy</a></p>
     </div>
   </div>
 </section>
@@ -207,13 +310,36 @@
 <section id="need" aria-labelledby="need-title">
   <div class="wrap">
     <p class="eyebrow">What you need</p>
-    <h2 id="need-title">An adapter and a car.</h2>
+    <h2 id="need-title">An ELM327 adapter and a car.</h2>
     <div class="grid-3">
       <div class="card"><h3>An adapter</h3><p>An ELM327-compatible OBD-II adapter with Bluetooth LE or Wi-Fi, for example Konnwei KW905, Vgate vLinker MC+ or other BLE/Wi-Fi models.</p></div>
       <div class="card"><h3>A car</h3><p>A car with an OBD-II port: most petrol cars from 1996 in the US and 2001 in the EU, diesels from 2004.</p></div>
       <div class="card"><h3>Not Classic Bluetooth</h3><p>Classic Bluetooth adapters without "Made for iPhone" support cannot connect to an iPhone. This is an iOS limit, not a Dashwise one.</p></div>
     </div>
-    <p class="note">No adapter yet? Try Dashwise with the built-in simulator. <a href="support.html#adapters">Which adapters work</a></p>
+    <p class="note">No adapter yet? Try Dashwise with the built-in simulator. <a href="/support#adapters">Which OBD2 adapters work with iPhone</a></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" aria-labelledby="faq-title">
+  <div class="wrap prose-narrow">
+    <p class="eyebrow">Questions</p>
+    <h2 id="faq-title">Frequently asked questions.</h2>
+<div class="faq">
+<details><summary>Does Dashwise work with my car?</summary>
+<p>Most likely, if it has an OBD-II port: that covers most petrol cars from 1996 in the US and 2001 in the EU, and diesels from 2004. Which values show depends on what your car reports. Dashwise was tested on a Toyota Corolla (ISO 9141-2, K-line) with a Konnwei KW905 adapter.</p></details>
+<details><summary>Which OBD2 adapters work on iPhone?</summary>
+<p>ELM327-compatible adapters with Bluetooth LE or Wi-Fi, for example the Konnwei KW905 or Vgate vLinker MC+. Classic Bluetooth adapters without Apple's "Made for iPhone" chip cannot connect to an iPhone; that is an iOS limit. See <a href="/support#adapters">which adapters work</a>.</p></details>
+<details><summary>Can I read and clear fault codes with Dashwise?</summary>
+<p>Yes. Dashwise reads stored, pending and permanent diagnostic trouble codes with plain-English descriptions, plus readiness monitors and freeze frame data. Clearing codes only works with the engine off and after two confirmations.</p></details>
+<details><summary>Can I use Dashwise as a trip logbook?</summary>
+<p>Yes. It records trips automatically or by hand, with distance, duration, top speed, the route and start and end addresses, and exports them to GPX, VBO or CSV, plus a mileage log you can send to your employer.</p></details>
+<details><summary>Does Dashwise collect my data?</summary>
+<p>No. There is no account, no analytics, no ads and no tracking. Engine data and trips stay on your iPhone. Only the start and end points of a trip are sent to Apple to look up their addresses. See the <a href="/privacy">privacy policy</a>.</p></details>
+<details><summary>Is there an Android version?</summary>
+<p>Not yet. An Android version will follow and will look and work like the iPhone app.</p></details>
+</div>
+    <p class="note">More help: <a href="/support">Dashwise support</a></p>
   </div>
 </section>
 
@@ -240,14 +366,14 @@
 </section>
 
 </main>
-
 <footer class="site-footer">
   <div class="wrap">
     <p>&copy; 2026 Stijn van de Pol</p>
     <nav aria-label="Footer">
-      <a href="support.html">Support</a>
-      <a href="privacy.html">Privacy</a>
+      <a href="/support">Support</a>
+      <a href="/privacy">Privacy</a>
       <a href="mailto:info@getdashwise.nl">info@getdashwise.nl</a>
+      <a class="lang" href="/nl/" hreflang="nl" lang="nl">Nederlands</a>
     </nav>
   </div>
 </footer>

@@ -1,0 +1,27 @@
+# Dashwise
+
+> Dashwise is an iPhone app (iOS 26 or later) that reads live engine data from an ELM327 OBD-II adapter over Bluetooth LE or Wi-Fi. It shows a live dashboard, reads fault codes, keeps a trip logbook and times laps on a circuit. No account, no ads, no tracking; data stays on the iPhone. An Android version will follow. Made by Stijn van de Pol (Netherlands). Contact: info@getdashwise.nl
+
+## What it does
+- Live dashboard: engine speed, road speed, coolant, intake, throttle, load, battery voltage and more, with a segmented rev bar and warnings with your own limits.
+- Fault codes: stored, pending and permanent diagnostic trouble codes (DTCs) with plain-English descriptions, readiness monitors and freeze frame data. Codes can be cleared only with the engine off and after two confirmations.
+- Trip logbook: automatic or manual trip recording with distance, duration, top speed, route and start and end addresses. Export to GPX, VBO or CSV. A dedicated export for mileage claims is coming soon.
+- Track days: GPS lap timing with own start/finish and sector lines, best and last lap, live delta, shift light.
+- Lock Screen and CarPlay: a Live Activity shows a key value and warnings.
+- Built-in simulator to try the app without a car or adapter.
+
+## Requirements
+- An ELM327-compatible OBD-II adapter with Bluetooth LE or Wi-Fi (for example Konnwei KW905, Vgate vLinker MC+). Classic Bluetooth adapters without Apple's "Made for iPhone" chip cannot connect to an iPhone (an iOS limit).
+- A car with an OBD-II port (most petrol cars from 1996 in the US and 2001 in the EU, diesels from 2004).
+
+## Privacy
+- No account, no analytics, no advertising, no tracking, no cookies on the website.
+- Engine data and trips stay on the iPhone. Only the start and end points of a trip are sent to Apple to look up addresses; map images come from Apple Maps while a trip map is shown.
+
+## Pages
+- [Home (English)](https://getdashwise.nl/): overview, features and FAQ
+- [Support (English)](https://getdashwise.nl/support): adapters that work, troubleshooting, simulator
+- [Privacy policy (English)](https://getdashwise.nl/privacy)
+- [Home (Nederlands)](https://getdashwise.nl/nl/): the same in Dutch (the app itself is English only for now)
+- [Support (Nederlands)](https://getdashwise.nl/nl/support)
+- [Privacybeleid (Nederlands)](https://getdashwise.nl/nl/privacy)

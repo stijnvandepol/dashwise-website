@@ -1,0 +1,17 @@
+{
+  "name": "Dashwise",
+  "short_name": "Dashwise",
+  "description": "OBD2 app for iPhone: live engine data, fault codes and a trip logbook.",
+  "lang": "en",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#111418",
+  "theme_color": "#111418",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/assets/mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
