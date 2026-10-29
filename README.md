@@ -102,8 +102,7 @@ You need a Linux server with Docker, the Docker Compose plugin and a reverse pro
 
 2. **Install the runner.** On GitHub, open this repository > Settings > Actions > Runners >
    New self-hosted runner > Linux, and run the commands it shows as `gh-runner`
-   (`sudo -iu gh-runner`). When `config.sh` asks for labels, add `dashwise-website`, or pass
-   `--labels dashwise-website`. Then, from the runner folder, install it as a service:
+   (`sudo -iu gh-runner`). Keep the default labels (`self-hosted`, `Linux`, `X64`); the workflow runs on those. Then, from the runner folder, install it as a service:
 
    ```bash
    sudo ./svc.sh install gh-runner
@@ -163,7 +162,7 @@ git push
 
 | Symptom | Check |
 |---|---|
-| The run stays "Queued" | The runner is offline: `sudo ./svc.sh status` in the runner folder, or Settings > Actions > Runners. Check that the label is `dashwise-website`. |
+| The run stays "Queued" | The runner is offline: `sudo ./svc.sh status` in the runner folder, or Settings > Actions > Runners. Check that it has the labels `self-hosted`, `Linux` and `X64`. |
 | `permission denied ... docker.sock` | `gh-runner` is not in the `docker` group. Add it, then restart the runner service. |
 | `port is already allocated` | Something else uses 8080. Set `WEB_PORT` for the runner, for example in the runner's `.env`, and point the proxy at that port. |
 | The site is up but shows an old version | Check that the last Deploy run is green, and clear the proxy's or the CDN's cache if you use one. |
