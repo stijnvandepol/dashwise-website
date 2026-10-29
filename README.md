@@ -24,7 +24,7 @@ source.
 ## Deploy on Cloudflare Pages
 
 1. Cloudflare dashboard > Workers & Pages > Create > Pages > Connect to Git, pick this repository.
-2. Framework preset: None. Build command: empty. **Build output directory: `website`**.
+2. Framework preset: None. Build command: empty. **Build output directory: `/` (the repo root)**.
 3. Deploy. Check the preview URL, then open Custom domains > Set up a custom domain > `getdashwise.nl`
    (and `www.getdashwise.nl`, redirecting to the apex). The domain's DNS must be on Cloudflare.
 4. Check the headers with `curl -sI https://getdashwise.nl/` and a CSP check in the browser console.
