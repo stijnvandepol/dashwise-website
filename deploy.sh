@@ -14,7 +14,8 @@ if [[ "${1:-}" == "--pull" ]]; then
   git reset --quiet --hard origin/main
 fi
 
-echo "==> Building the new image ($(git rev-parse --short HEAD))"
+export ASSET_VERSION="$(git rev-parse --short HEAD)"
+echo "==> Building the new image (${ASSET_VERSION})"
 docker compose build --pull
 
 echo "==> Removing the old container"

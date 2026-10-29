@@ -2,7 +2,10 @@ name: dashwise-website
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      args:
+        ASSET_VERSION: ${ASSET_VERSION:-dev}
     image: dashwise-website:latest
     container_name: dashwise-website
     restart: unless-stopped
