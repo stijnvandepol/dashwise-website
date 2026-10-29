@@ -42,4 +42,18 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://getdashwise.nl/nl/privacy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://getdashwise.nl/privacy"/>
   </url>
+  <url>
+    <loc>https://getdashwise.nl/terms</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://getdashwise.nl/terms"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://getdashwise.nl/nl/voorwaarden"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://getdashwise.nl/terms"/>
+  </url>
+  <url>
+    <loc>https://getdashwise.nl/nl/voorwaarden</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://getdashwise.nl/terms"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://getdashwise.nl/nl/voorwaarden"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://getdashwise.nl/terms"/>
+  </url>
 </urlset>

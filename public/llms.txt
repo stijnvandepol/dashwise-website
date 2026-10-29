@@ -22,6 +22,8 @@
 - [Home (English)](https://getdashwise.nl/): overview, features and FAQ
 - [Support (English)](https://getdashwise.nl/support): adapters that work, troubleshooting, simulator
 - [Privacy policy (English)](https://getdashwise.nl/privacy)
+- [Terms of Use (English)](https://getdashwise.nl/terms)
 - [Home (Nederlands)](https://getdashwise.nl/nl/): the same in Dutch (the app itself is English only for now)
 - [Support (Nederlands)](https://getdashwise.nl/nl/support)
 - [Privacybeleid (Nederlands)](https://getdashwise.nl/nl/privacy)
+- [Gebruiksvoorwaarden (Nederlands)](https://getdashwise.nl/nl/voorwaarden)
