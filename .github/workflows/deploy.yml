@@ -15,7 +15,7 @@ concurrency:
 jobs:
   deploy:
     # The self-hosted runner on the web server; it builds and runs the container there.
-    runs-on: [self-hosted, linux, dashwise-website]
+    runs-on: [self-hosted, Linux, X64]
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
