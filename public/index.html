@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dashwise - OBD2 app for iPhone: dashboard &amp; trip logbook</title>
-<meta name="description" content="Live OBD-II dashboard for iPhone with ELM327 Bluetooth LE or Wi-Fi adapters. Read fault codes, keep a trip logbook, time laps. No account, no tracking.">
+<meta name="description" content="Live OBD-II dashboard for iPhone with a Bluetooth LE or Wi-Fi OBD adapter. Read fault codes, keep a trip logbook, time laps. No account, no tracking.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#111418" media="(prefers-color-scheme: dark)">
@@ -16,7 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dashwise">
 <meta property="og:title" content="Dashwise - OBD2 app for iPhone: dashboard &amp; trip logbook">
-<meta property="og:description" content="Live OBD-II dashboard for iPhone with ELM327 Bluetooth LE or Wi-Fi adapters. Read fault codes, keep a trip logbook, time laps. No account, no tracking.">
+<meta property="og:description" content="Live OBD-II dashboard for iPhone with a Bluetooth LE or Wi-Fi OBD adapter. Read fault codes, keep a trip logbook, time laps. No account, no tracking.">
 <meta property="og:url" content="https://getdashwise.nl/">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="nl_NL">
@@ -26,7 +26,7 @@
 <meta property="og:image:alt" content="Dashwise app icon with a segmented rev bar and the text Dashwise, OBD2 dashboard and trip logbook for iPhone">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dashwise - OBD2 app for iPhone: dashboard &amp; trip logbook">
-<meta name="twitter:description" content="Live OBD-II dashboard for iPhone with ELM327 Bluetooth LE or Wi-Fi adapters. Read fault codes, keep a trip logbook, time laps. No account, no tracking.">
+<meta name="twitter:description" content="Live OBD-II dashboard for iPhone with a Bluetooth LE or Wi-Fi OBD adapter. Read fault codes, keep a trip logbook, time laps. No account, no tracking.">
 <meta name="twitter:image" content="https://getdashwise.nl/og-image.png">
 <meta name="twitter:image:alt" content="Dashwise app icon with a segmented rev bar and the text Dashwise, OBD2 dashboard and trip logbook for iPhone">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -81,13 +81,13 @@
       "@id": "https://getdashwise.nl/#app",
       "name": "Dashwise",
       "url": "https://getdashwise.nl/",
-      "description": "Dashwise is an OBD2 app for iPhone. It shows live engine data from an ELM327 OBD-II adapter over Bluetooth LE or Wi-Fi, reads fault codes, keeps a trip logbook and times laps. No account, no tracking.",
+      "description": "Dashwise is an OBD2 app for iPhone. It shows live engine data from an OBD-II adapter over Bluetooth LE or Wi-Fi, reads fault codes, keeps a trip logbook and times laps. No account, no tracking.",
       "inLanguage": "en",
       "operatingSystem": "iOS",
       "applicationCategory": "UtilitiesApplication",
-      "softwareRequirements": "iOS 26 or later; ELM327-compatible OBD-II adapter with Bluetooth LE or Wi-Fi",
+      "softwareRequirements": "iOS 26 or later; OBD-II adapter with Bluetooth LE or Wi-Fi",
       "featureList": [
-        "Live engine data from an ELM327 adapter (Bluetooth LE or Wi-Fi)",
+        "Live engine data from an OBD adapter (Bluetooth LE or Wi-Fi)",
         "Fault codes (stored, pending, permanent), readiness monitors and freeze frame data",
         "Trip logbook with start and end addresses, exportable to GPX, VBO and CSV",
         "GPS lap timing with your own start/finish and sector lines",
@@ -135,7 +135,7 @@
     <div>
       <p class="eyebrow">OBD-II dashboard for iPhone</p>
       <h1 class="display" id="hero-title">OBD2 app for iPhone. Your car, at a glance.</h1>
-      <p class="lead">Dashwise is an OBD2 app for iPhone that shows live engine data from an ELM327 adapter over Bluetooth LE or Wi-Fi. Read fault codes, keep a trip logbook and time laps, all private on your iPhone.</p>
+      <p class="lead">Dashwise is an OBD2 app for iPhone that shows live engine data from a Bluetooth or Wi-Fi OBD adapter. Read fault codes, keep a trip logbook and time laps, all private on your iPhone.</p>
       <div class="cta-row">
         
         <a class="btn" href="#get-the-app">Coming soon to the App Store</a><!-- TODO: link to the App Store when live -->
@@ -143,22 +143,13 @@
       </div>
       <p class="note">No account. No ads. No tracking.</p>
     </div>
-    <!-- Dashboard impression, built in HTML/CSS. Values are an example, not a screenshot. -->
-    <div class="cluster" role="img" aria-label="Example of the Dashwise dashboard: 5,400 rpm, 112 kilometres per hour, coolant 89 degrees Celsius, with a rev bar close to the caution zone.">
-      <p class="cluster-title" aria-hidden="true"><span>Dash</span><span>Example</span></p>
+    <div class="shot-wrap">
       <ul class="rev" aria-hidden="true">
-        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
       </ul>
-      <dl class="tiles" aria-hidden="true">
-        <div class="tile tile-wide"><dt>Engine speed</dt><dd>5400<span class="unit">rpm</span></dd></div>
-        <div class="tile"><dt>Speed</dt><dd>112<span class="unit">km/h</span></dd></div>
-        <div class="tile"><dt>Coolant</dt><dd class="state-ok">89<span class="unit">&deg;C</span></dd></div>
-      </dl>
+      <figure class="shot"><img src="/assets/screens/01-dash-cluster-600.jpg" srcset="/assets/screens/01-dash-cluster-300.jpg 299w, /assets/screens/01-dash-cluster-600.jpg 598w" sizes="(min-width: 48rem) 288px, 45vw" width="598" height="1300" fetchpriority="high" decoding="async" alt="Dashwise Dash page in the Race theme: a segmented rev bar, 3541 rpm, 73 km/h, coolant 91 degrees and smaller intake, throttle, load, battery and airflow values."></figure>
     </div>
   </div>
-  <!-- SCREENSHOT: hero, iPhone 6.9", Dash page in the Race theme, simulator or real car -->
 </section>
 
 <!-- LIVE DASHBOARD -->
@@ -174,17 +165,8 @@
         <li>Your own limits for coolant, voltage and rpm: a calm coloured frame, a banner and an optional tone when a value goes out of range</li>
       </ul>
     </div>
-    <div class="cluster" role="img" aria-label="Example of a sensors list: battery voltage 14.1 volts, intake air 31 degrees Celsius, throttle 42 percent, engine load 63 percent.">
-      <div class="live" aria-hidden="true">
-        <div class="row"><span>BATTERY</span><b>14.1 V</b></div>
-        <div class="row"><span>INTAKE</span><b>31 &deg;C</b></div>
-        <div class="row"><span>THROTTLE</span><b>42 %</b></div>
-        <div class="row"><span>LOAD</span><b>63 %</b></div>
-        <div class="row"><span>COOLANT</span><b class="state-caution">104 &deg;C</b></div>
-      </div>
-    </div>
+    <div class="shots"><figure class="shot"><img src="/assets/screens/08-warning-600.jpg" srcset="/assets/screens/08-warning-300.jpg 299w, /assets/screens/08-warning-600.jpg 598w" sizes="(min-width: 48rem) 288px, 45vw" width="598" height="1300" loading="lazy" decoding="async" alt="Dashwise Dash page with an amber frame and banner: coolant at 105 degrees is above the limit."></figure><figure class="shot"><img src="/assets/screens/02-dash-grid-600.jpg" srcset="/assets/screens/02-dash-grid-300.jpg 299w, /assets/screens/02-dash-grid-600.jpg 598w" sizes="(min-width: 48rem) 288px, 45vw" width="598" height="1300" loading="lazy" decoding="async" alt="Dashwise Dash page in the graph layout: live line graphs for rpm, speed and coolant, with fuel trims and battery voltage as large numerals."></figure></div>
   </div>
-  <!-- SCREENSHOT: Sensors page with a warning banner -->
 </section>
 
 <!-- FAULT CODES -->
@@ -200,15 +182,8 @@
       </ul>
       <p class="note">Clearing codes also resets the readiness monitors. Fix the cause first.</p>
     </div>
-    <div class="cluster" role="img" aria-label="Example of a fault code list: P0301 stored, P0420 pending, P0171 stored.">
-      <ul class="dtc" aria-hidden="true">
-        <li><span class="c">P0301</span><span>Cylinder 1 misfire</span><span class="k state-danger">Stored</span></li>
-        <li><span class="c">P0420</span><span>Catalyst efficiency</span><span class="k state-caution">Pending</span></li>
-        <li><span class="c">P0171</span><span>System too lean</span><span class="k state-danger">Stored</span></li>
-      </ul>
-    </div>
+    <div class="shots shots-one"><figure class="shot"><img src="/assets/screens/04-diag-codes-600.jpg" srcset="/assets/screens/04-diag-codes-300.jpg 299w, /assets/screens/04-diag-codes-600.jpg 598w" sizes="(min-width: 48rem) 288px, 45vw" width="598" height="1300" loading="lazy" decoding="async" alt="Dashwise Diagnostics page with stored codes P0171 and P1349 and pending code P0300, with plain descriptions."></figure></div>
   </div>
-  <!-- SCREENSHOT: Diag page with fault codes -->
 </section>
 
 <!-- TRIP LOGBOOK -->
@@ -224,18 +199,8 @@
         <li>Addresses are looked up on your iPhone with Apple and stay on your iPhone</li>
       </ul>
     </div>
-    <div class="cluster trip" role="img" aria-label="Example of a trip from Eindhoven to Utrecht: 42.8 kilometres in 38 minutes, top speed 118 kilometres per hour.">
-      <div aria-hidden="true">
-        <p class="route"><b>Home, Eindhoven</b> to <b>Office, Utrecht</b></p>
-      </div>
-      <dl class="stats" aria-hidden="true">
-        <div class="tile"><dt>Distance</dt><dd>42.8<span class="unit">km</span></dd></div>
-        <div class="tile"><dt>Time</dt><dd>38<span class="unit">min</span></dd></div>
-        <div class="tile"><dt>Top</dt><dd>118<span class="unit">km/h</span></dd></div>
-      </dl>
-    </div>
+    <div class="shots"><figure class="shot"><img src="/assets/screens/05-trips-list-600.jpg" srcset="/assets/screens/05-trips-list-300.jpg 299w, /assets/screens/05-trips-list-600.jpg 598w" sizes="(min-width: 48rem) 288px, 45vw" width="598" height="1300" loading="lazy" decoding="async" alt="Dashwise Trips page: a list of recorded drives."></figure><figure class="shot"><img src="/assets/screens/06-trip-detail-600.jpg" srcset="/assets/screens/06-trip-detail-300.jpg 299w, /assets/screens/06-trip-detail-600.jpg 598w" sizes="(min-width: 48rem) 288px, 45vw" width="598" height="1300" loading="lazy" decoding="async" alt="Dashwise trip detail: the route on a map from Utrecht to Amsterdam, start and end addresses, 36.6 km in 28 minutes."></figure></div>
   </div>
-  <!-- SCREENSHOT: Trips list and a trip detail with route -->
 </section>
 
 <!-- TRACK DAYS -->
@@ -247,28 +212,20 @@
       <p class="lead">GPS lap timing with your own start/finish and sector lines. Best lap, last lap and live delta, plus a shift light you set yourself.</p>
       <p class="note">Lap timing is meant for circuits, not public roads.</p>
     </div>
-    <div class="cluster" role="img" aria-label="Example of lap timing: last lap 1 minute 42.318 seconds, delta minus 0.214 seconds.">
-      <div aria-hidden="true">
-        <p class="cluster-title"><span>Last lap</span><span>Lap 7</span></p>
-        <p class="lap">1:42.318</p>
-        <p class="delta state-ok">-0.214</p>
-      </div>
-    </div>
+    <div class="shots shots-one"><figure class="shot"><img src="/assets/screens/03-track-lap-600.jpg" srcset="/assets/screens/03-track-lap-300.jpg 299w, /assets/screens/03-track-lap-600.jpg 598w" sizes="(min-width: 48rem) 288px, 45vw" width="598" height="1300" loading="lazy" decoding="async" alt="Dashwise Track page during a lap session: current lap 0:18.1, last and best lap 0:45.278, delta +3.44, with Add sector and Stop buttons."></figure></div>
   </div>
-  <!-- SCREENSHOT: Track page during a session -->
 </section>
 
 <!-- LIVE ACTIVITY -->
 <section aria-labelledby="live-activity-title">
-  <div class="wrap split">
+  <div class="wrap">
     <div>
       <p class="eyebrow">Lock Screen and CarPlay</p>
       <h2 id="live-activity-title">Your key value, one glance away.</h2>
       <p class="lead">A Live Activity shows your key value and warnings on the Lock Screen and in the CarPlay Dashboard.</p>
       <p class="note">Dashwise shows what your car reports. Keep your eyes on the road and let a passenger operate the app while driving.</p>
     </div>
-    <!-- SCREENSHOT: Live Activity on the Lock Screen and in the CarPlay Dashboard -->
-    <div class="screenshot-slot">Screenshot of the Live Activity will be added here.</div>
+    <!-- SCREENSHOT TODO: Live Activity on the Lock Screen and in the CarPlay Dashboard (no real screenshot yet; do not fake one) -->
   </div>
 </section>
 
@@ -278,12 +235,12 @@
     <p class="eyebrow">Make it yours</p>
     <h2 id="themes-title">Nine themes, five cluster styles.</h2>
     <p class="lead">Day and night themes, your own accent colour, and the choice of which screen Dashwise opens with: dashboard or trips.</p>
+    <div class="shots shots-themes"><figure class="shot"><img src="/assets/screens/07-theme-600.jpg" srcset="/assets/screens/07-theme-300.jpg 299w, /assets/screens/07-theme-600.jpg 598w" sizes="(min-width: 48rem) 288px, 45vw" width="598" height="1300" loading="lazy" decoding="async" alt="Dashwise Dash page with a round yellow gauge for 3541 rpm and large speed and coolant numerals, in a dark theme with a red accent."></figure><figure class="shot"><img src="/assets/screens/07b-theme-day-grid-600.jpg" srcset="/assets/screens/07b-theme-day-grid-300.jpg 299w, /assets/screens/07b-theme-day-grid-600.jpg 598w" sizes="(min-width: 48rem) 288px, 45vw" width="598" height="1300" loading="lazy" decoding="async" alt="Dashwise in the light Day theme, with live graphs for rpm and speed and large numerals."></figure></div>
     <div class="swatches" aria-hidden="true">
       <div class="swatch sw-race"><span>Race</span><span class="bar"></span></div>
       <div class="swatch sw-rosso"><span>Rosso</span><span class="bar"></span></div>
       <div class="swatch sw-day"><span>Day</span><span class="bar"></span></div>
     </div>
-    <!-- SCREENSHOT: Theme picker -->
   </div>
 </section>
 
@@ -310,9 +267,9 @@
 <section id="need" aria-labelledby="need-title">
   <div class="wrap">
     <p class="eyebrow">What you need</p>
-    <h2 id="need-title">An ELM327 adapter and a car.</h2>
+    <h2 id="need-title">An OBD adapter and a car.</h2>
     <div class="grid-3">
-      <div class="card"><h3>An adapter</h3><p>An ELM327-compatible OBD-II adapter with Bluetooth LE or Wi-Fi, for example Konnwei KW905, Vgate vLinker MC+ or other BLE/Wi-Fi models.</p></div>
+      <div class="card"><h3>An adapter</h3><p>A Bluetooth LE or Wi-Fi OBD-II adapter that works with iPhone. <a href="/support#adapters">See the support page</a> for details.</p></div>
       <div class="card"><h3>A car</h3><p>A car with an OBD-II port: most petrol cars from 1996 in the US and 2001 in the EU, diesels from 2004.</p></div>
       <div class="card"><h3>Not Classic Bluetooth</h3><p>Classic Bluetooth adapters without "Made for iPhone" support cannot connect to an iPhone. This is an iOS limit, not a Dashwise one.</p></div>
     </div>
@@ -327,9 +284,9 @@
     <h2 id="faq-title">Frequently asked questions.</h2>
 <div class="faq">
 <details><summary>Does Dashwise work with my car?</summary>
-<p>Most likely, if it has an OBD-II port: that covers most petrol cars from 1996 in the US and 2001 in the EU, and diesels from 2004. Which values show depends on what your car reports. Dashwise was tested on a Toyota Corolla (ISO 9141-2, K-line) with a Konnwei KW905 adapter.</p></details>
+<p>Most likely, if it has an OBD-II port: that covers most petrol cars from 1996 in the US and 2001 in the EU, and diesels from 2004. Which values show depends on what your car reports. Dashwise was tested on a Toyota Corolla (ISO 9141-2, K-line) with a Bluetooth LE OBD adapter.</p></details>
 <details><summary>Which OBD2 adapters work on iPhone?</summary>
-<p>ELM327-compatible adapters with Bluetooth LE or Wi-Fi, for example the Konnwei KW905 or Vgate vLinker MC+. Classic Bluetooth adapters without Apple's "Made for iPhone" chip cannot connect to an iPhone; that is an iOS limit. See <a href="/support#adapters">which adapters work</a>.</p></details>
+<p>A Bluetooth LE or Wi-Fi OBD adapter. Classic Bluetooth adapters without Apple's "Made for iPhone" chip cannot connect to an iPhone; that is an iOS limit. See <a href="/support#adapters">which adapters work</a>.</p></details>
 <details><summary>Can I read and clear fault codes with Dashwise?</summary>
 <p>Yes. Dashwise reads stored, pending and permanent diagnostic trouble codes with plain-English descriptions, plus readiness monitors and freeze frame data. Clearing codes only works with the engine off and after two confirmations.</p></details>
 <details><summary>Can I use Dashwise as a trip logbook?</summary>
@@ -370,17 +327,11 @@
   <div class="wrap">
     <div class="imprint">
       <p>&copy; 2026 Stijn van de Pol</p>
-      <address>
-        Stijn IT &middot; Stijn van de Pol<br>
-        Snavelbiesstraat 8, 5445 NV Landhorst, the Netherlands
-        <br>KvK: 42015984
-        <br>VAT: NL005437344B89
-        <br><a href="mailto:info@getdashwise.nl">info@getdashwise.nl</a>
-      </address>
     </div>
     <nav aria-label="Footer">
       <a href="/support">Support</a>
       <a href="/privacy">Privacy</a>
+      <a href="/imprint">Imprint</a>
       <a href="mailto:info@getdashwise.nl">info@getdashwise.nl</a>
       <a class="lang" href="/nl/" hreflang="nl" lang="nl">Nederlands</a>
     </nav>

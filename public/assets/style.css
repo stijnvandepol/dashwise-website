@@ -130,6 +130,18 @@ h2 { font-size: clamp(1.6rem, 5vw, 2.3rem); line-height: 1.15; letter-spacing: -
 .sw-day .bar { background: #0a0a0a; }
 .screenshot-slot { border: 2px dashed var(--ink-faint); border-radius: 1.25rem; padding: 2rem 1rem; text-align: center; color: var(--ink-muted); font-size: .9rem; }
 
+/* App screenshots in a calm phone frame */
+.shot { margin: 0; width: 100%; max-width: 18rem; justify-self: center; }
+.shot img { display: block; width: 100%; height: auto; background: #000; border: 3px solid #2a2e35; border-radius: 12% / 5.5%; }
+.shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; justify-items: center; }
+.shots-one { grid-template-columns: minmax(0, 1fr); }
+.shots-one .shot { max-width: 15rem; }
+.shots-themes { max-width: 38rem; margin: 2rem 0 0; }
+.shot-wrap { max-width: 18rem; width: 100%; justify-self: center; }
+.shot-wrap .rev { height: 1rem; margin-bottom: .9rem; }
+.shot-wrap .shot { max-width: none; }
+@media (max-width: 30rem) { .shots:not(.shots-one) { gap: .6rem; } }
+
 /* Android block: switch on later by removing the hidden attribute and this rule */
 .platform-android { display: none; }
 .platform-android.is-on { display: block; }
@@ -166,4 +178,4 @@ h2 { font-size: clamp(1.6rem, 5vw, 2.3rem); line-height: 1.15; letter-spacing: -
 
 /* Imprint block in the footer */
 .site-footer .imprint p { margin: 0 0 .5rem; }
-.site-footer address { font-style: normal; line-height: 1.6; }
+.prose address, .site-footer address { font-style: normal; line-height: 1.6; }
