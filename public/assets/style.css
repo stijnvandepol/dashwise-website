@@ -50,14 +50,16 @@ p { margin: 0; }
 .num, .strip figcaption, .checks { font-variant-numeric: tabular-nums; }
 
 /* Header */
-.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: .5rem 1rem; padding-top: .8rem; padding-bottom: .8rem; flex-wrap: wrap; }
+.site-header { position: sticky; top: 0; z-index: 10; }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 3.5rem; flex-wrap: nowrap; }
 .brand { display: inline-flex; align-items: center; gap: .55rem; font-weight: 800; font-size: 1.0625rem; letter-spacing: -.01em; text-decoration: none; }
 .brand img { width: 1.75rem; height: 1.75rem; border-radius: .45rem; }
-.site-nav { display: flex; align-items: center; gap: .25rem 1.25rem; font-size: .9375rem; flex-wrap: wrap; }
+.site-nav { display: flex; align-items: center; gap: 1.25rem; font-size: .9375rem; flex-wrap: nowrap; white-space: nowrap; }
 .site-nav a { color: var(--muted); text-decoration: none; padding: .35rem 0; }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--ink); }
-/* On phones only the page links stay; the in-page anchors return on wider screens */
-.site-nav a[href^="#"] { display: none; }
+/* Same header on every page. On phones only Support, Privacy and the language stay */
+.site-nav .nav-extra { display: none; }
+.brand { flex-shrink: 0; }
 .site-nav a.lang { color: var(--ink); font-weight: 600; border: 1px solid #3a3f46; border-radius: 999px; padding: .2rem .7rem; }
 
 /* Buttons */
@@ -158,7 +160,7 @@ section { padding: var(--section) 0; }
   .hero-shot { width: 19rem; height: 30rem; margin-bottom: 1rem; }
   .rev { gap: 4px; height: 1rem; }
   .hero { padding-bottom: 1rem; }
-  .site-nav a[href^="#"] { display: inline; }
+  .site-nav .nav-extra { display: inline; }
   .strip { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; }
   .section-head { margin-bottom: 3rem; }
   .cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -184,3 +186,4 @@ section { padding: var(--section) 0; }
 }
 @keyframes seg-on { from { background: var(--seg-off); } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+html { scroll-padding-top: 4.5rem; }
